@@ -46,6 +46,7 @@ export default function Dashboard() {
   const [showPassword, setShowPassword] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [outputType, setOutputType] = useState<"url" | "qr" | "both">("url");
+  const [shortUrl, setShortUrl] = useState("");
   const [generatedQRCode, setGeneratedQRCode] = useState("");
   
   const navigate = useNavigate();
