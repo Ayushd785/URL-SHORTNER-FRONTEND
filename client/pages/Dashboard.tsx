@@ -84,21 +84,41 @@ export default function Dashboard() {
     }
   ]);
 
+  const generateQRCode = (text: string) => {
+    // Generate QR code using a simple QR code generator
+    // In a real app, you'd use a proper QR code library like qrcode
+    const size = 200;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(text)}`;
+    return qrUrl;
+  };
+
   const handleCreateLink = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsCreating(true);
-    
+
     // Simulate API call
     setTimeout(() => {
+      if (url) {
+        // Generate short URL
+        const shortCode = Math.random().toString(36).substring(2, 8);
+        const newShortUrl = `https://sh.ly/${shortCode}`;
+
+        if (outputType === "url" || outputType === "both") {
+          setShortUrl(newShortUrl);
+        } else {
+          setShortUrl("");
+        }
+
+        if (outputType === "qr" || outputType === "both") {
+          const qrCodeUrl = generateQRCode(url);
+          setGeneratedQRCode(qrCodeUrl);
+        } else {
+          setGeneratedQRCode("");
+        }
+      }
+
       setIsCreating(false);
-      // Reset form
-      setUrl("");
-      setCustomAlias("");
-      setPassword("");
-      setDescription("");
-      setUsePassword(false);
-      setUseCustomAlias(false);
-      // Show success message or redirect
+      // Don't reset form immediately so user can see results
     }, 1000);
   };
 
