@@ -412,6 +412,78 @@ export default function Dashboard() {
                    "Generate Both"}
                 </Button>
               </form>
+
+              {/* Results Display */}
+              {(shortUrl || generatedQRCode) && (
+                <div className="mt-6 space-y-4 border-t pt-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold text-gray-900">Generated Results</h3>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={resetForm}
+                    >
+                      Create Another
+                    </Button>
+                  </div>
+
+                  {shortUrl && (
+                    <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                      <div className="flex items-center space-x-2 mb-2">
+                        <LinkIcon className="w-4 h-4 text-blue-600" />
+                        <span className="text-sm font-medium text-blue-800">Short URL</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-blue-800 font-medium break-all">{shortUrl}</span>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => copyToClipboard(shortUrl)}
+                          className="ml-2 flex-shrink-0"
+                        >
+                          <Copy className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  )}
+
+                  {generatedQRCode && (
+                    <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                      <div className="flex items-center space-x-2 mb-3">
+                        <QrCode className="w-4 h-4 text-purple-600" />
+                        <span className="text-sm font-medium text-purple-800">QR Code</span>
+                      </div>
+                      <div className="flex flex-col items-center space-y-3">
+                        <img
+                          src={generatedQRCode}
+                          alt="Generated QR Code"
+                          className="w-48 h-48 border border-gray-200 rounded-lg"
+                        />
+                        <div className="flex space-x-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={downloadQRCode}
+                            className="flex items-center space-x-2"
+                          >
+                            <Download className="w-4 h-4" />
+                            <span>Download</span>
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => copyToClipboard(url)}
+                            className="flex items-center space-x-2"
+                          >
+                            <Copy className="w-4 h-4" />
+                            <span>Copy URL</span>
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
             </CardContent>
           </Card>
 
