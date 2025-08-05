@@ -223,16 +223,27 @@ export default function Links() {
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
             </Button>
-            <Button variant="ghost" className="text-gray-600">
+            <Button variant="ghost" onClick={() => navigate('/settings')}>
               <Settings className="w-4 h-4 mr-2" />
               Settings
             </Button>
           </nav>
           <div className="flex items-center space-x-3">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-medium text-gray-900">John Doe</p>
-              <p className="text-xs text-gray-500">Pro Plan</p>
+              <p className="text-sm font-medium text-gray-900">{userData.firstName} {userData.lastName}</p>
+              <p className="text-xs text-gray-500">{userData.plan}</p>
             </div>
+            <Avatar className="w-8 h-8">
+              {userData.avatar && userData.avatar.startsWith('data:') ? (
+                <AvatarImage src={userData.avatar} />
+              ) : userData.avatar ? (
+                <div className="w-full h-full flex items-center justify-center text-lg">
+                  {userData.avatar}
+                </div>
+              ) : (
+                <AvatarFallback>{getInitials(userData.firstName, userData.lastName)}</AvatarFallback>
+              )}
+            </Avatar>
             <Button variant="ghost" size="icon" onClick={() => navigate('/login')}>
               <LogOut className="w-4 h-4" />
             </Button>
