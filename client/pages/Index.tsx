@@ -56,7 +56,12 @@ export default function Index() {
           </div>
           <div className="hidden md:flex items-center space-x-6">
             <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors">Pricing</a>
+            <button
+              onClick={() => navigate('/pricing')}
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Pricing
+            </button>
             <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
           </div>
           <div className="flex items-center space-x-3">
