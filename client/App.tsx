@@ -13,6 +13,7 @@ import Dashboard from "./pages/Dashboard";
 import Links from "./pages/Links";
 import Settings from "./pages/Settings";
 import Pricing from "./pages/Pricing";
+import VerifyLink from "./pages/VerifyLink";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
