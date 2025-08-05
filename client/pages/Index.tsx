@@ -374,7 +374,7 @@ export default function Index() {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 {/* Profile Picture Placeholder */}
                 <div className="flex-shrink-0">
-                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-4xl md:text-5xl font-bold shadow-2xl">
+                  <div className="developer-avatar w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-4xl md:text-5xl font-bold shadow-2xl">
                     A
                   </div>
                   <div className="text-center mt-4">
