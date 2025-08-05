@@ -5,12 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { 
-  Link as LinkIcon, 
-  Copy, 
-  BarChart3, 
-  Settings, 
-  LogOut, 
+import {
+  Link as LinkIcon,
+  Copy,
+  BarChart3,
+  Settings,
+  LogOut,
   Search,
   MoreVertical,
   Edit,
@@ -24,7 +24,8 @@ import {
   TrendingUp,
   Globe,
   Smartphone,
-  Monitor
+  Monitor,
+  QrCode
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
