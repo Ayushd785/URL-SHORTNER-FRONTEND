@@ -377,37 +377,6 @@ export default function Index() {
                   <div className="developer-avatar w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-4xl md:text-5xl font-bold shadow-2xl">
                     A
                   </div>
-                  <div className="text-center mt-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-xs"
-                      onClick={() => {
-                        const input = document.createElement('input');
-                        input.type = 'file';
-                        input.accept = 'image/*';
-                        input.onchange = (e) => {
-                          const file = (e.target as HTMLInputElement).files?.[0];
-                          if (file) {
-                            const reader = new FileReader();
-                            reader.onload = (event) => {
-                              const img = document.querySelector('.developer-avatar') as HTMLElement;
-                              if (img && event.target?.result) {
-                                img.style.backgroundImage = `url(${event.target.result})`;
-                                img.style.backgroundSize = 'cover';
-                                img.style.backgroundPosition = 'center';
-                                img.innerHTML = '';
-                              }
-                            };
-                            reader.readAsDataURL(file);
-                          }
-                        };
-                        input.click();
-                      }}
-                    >
-                      Add Photo
-                    </Button>
-                  </div>
                 </div>
 
                 {/* Content */}
