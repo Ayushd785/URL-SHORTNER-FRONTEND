@@ -502,6 +502,12 @@ export default function Links() {
                               <Edit className="w-4 h-4 mr-2" />
                               Edit Link
                             </DropdownMenuItem>
+                            <DropdownMenuItem
+                              onClick={() => downloadQRCode(link.originalUrl, link.shortCode)}
+                            >
+                              <QrCode className="w-4 h-4 mr-2" />
+                              Download QR Code
+                            </DropdownMenuItem>
                             <DropdownMenuItem>
                               <ExternalLink className="w-4 h-4 mr-2" />
                               Visit Link
