@@ -138,6 +138,22 @@ export default function Links() {
     navigator.clipboard.writeText(text);
   };
 
+  const generateQRCode = (url: string) => {
+    const size = 200;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(url)}`;
+    return qrUrl;
+  };
+
+  const downloadQRCode = (url: string, filename: string) => {
+    const qrCodeUrl = generateQRCode(url);
+    const link = document.createElement('a');
+    link.href = qrCodeUrl;
+    link.download = `${filename}-qr-code.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   const filteredLinks = links.filter(link => {
     const matchesSearch = link.originalUrl.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          link.shortUrl.toLowerCase().includes(searchTerm.toLowerCase()) ||
