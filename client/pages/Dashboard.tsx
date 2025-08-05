@@ -406,7 +406,10 @@ export default function Dashboard() {
                   className="w-full h-11 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                   disabled={isCreating || !url}
                 >
-                  {isCreating ? "Creating..." : "Create Short Link"}
+                  {isCreating ? "Generating..." :
+                   outputType === "url" ? "Create Short Link" :
+                   outputType === "qr" ? "Generate QR Code" :
+                   "Generate Both"}
                 </Button>
               </form>
             </CardContent>
