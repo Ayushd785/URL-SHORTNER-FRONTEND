@@ -49,8 +49,21 @@ export default function Dashboard() {
   const [outputType, setOutputType] = useState<"url" | "qr" | "both">("url");
   const [shortUrl, setShortUrl] = useState("");
   const [generatedQRCode, setGeneratedQRCode] = useState("");
-  
+
+  // User data (in real app, this would come from context/state management)
+  const [userData] = useState({
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    avatar: "👨‍💻",
+    plan: "Pro Plan"
+  });
+
   const navigate = useNavigate();
+
+  const getInitials = (firstName: string, lastName: string) => {
+    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  };
 
   // Mock data for demonstration
   const [links] = useState<ShortLink[]>([
