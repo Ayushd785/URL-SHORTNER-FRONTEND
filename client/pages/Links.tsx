@@ -351,6 +351,7 @@ export default function Links() {
                     <TableHead>Original URL</TableHead>
                     <TableHead>Clicks</TableHead>
                     <TableHead>Device Split</TableHead>
+                    <TableHead>QR Code</TableHead>
                     <TableHead>Created</TableHead>
                     <TableHead>Status</TableHead>
                     <TableHead></TableHead>
