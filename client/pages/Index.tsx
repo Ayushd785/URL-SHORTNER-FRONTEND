@@ -9,13 +9,28 @@ import { useNavigate } from "react-router-dom";
 export default function Index() {
   const [url, setUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
+  const [outputType, setOutputType] = useState<"url" | "qr">("url");
+  const [qrCode, setQrCode] = useState("");
   const navigate = useNavigate();
+
+  const generateQRCode = (text: string) => {
+    const size = 200;
+    const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(text)}`;
+    return qrUrl;
+  };
 
   const handleShorten = () => {
     if (url) {
-      // Generate a mock short URL for demo
-      const shortCode = Math.random().toString(36).substring(2, 8);
-      setShortUrl(`https://sh.ly/${shortCode}`);
+      if (outputType === "url") {
+        // Generate a mock short URL for demo
+        const shortCode = Math.random().toString(36).substring(2, 8);
+        setShortUrl(`https://sh.ly/${shortCode}`);
+        setQrCode("");
+      } else {
+        // Generate QR code
+        setQrCode(generateQRCode(url));
+        setShortUrl("");
+      }
     }
   };
 
