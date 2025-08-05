@@ -59,14 +59,14 @@ export default function Index() {
             🚀 Trusted by 10M+ users worldwide
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-            Shorten URLs with
+            Shorten URLs &
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {" "}Power & Analytics
+              {" "}Generate QR Codes
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Create branded short links, track clicks in real-time, and protect your URLs with passwords. 
-            The most powerful URL shortener for businesses and creators.
+            Create branded short links, generate QR codes, track clicks in real-time, and protect your URLs with passwords.
+            The most powerful URL shortener and QR code generator for businesses and creators.
           </p>
 
           {/* URL Shortener Widget */}
