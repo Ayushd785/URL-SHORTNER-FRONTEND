@@ -34,8 +34,8 @@ export default function Index() {
     }
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(shortUrl);
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
   };
 
   return (
