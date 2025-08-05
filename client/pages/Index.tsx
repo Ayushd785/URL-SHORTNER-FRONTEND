@@ -87,6 +87,34 @@ export default function Index() {
           {/* URL Shortener Widget */}
           <Card className="max-w-2xl mx-auto mb-12 shadow-xl border-0 bg-white/80 backdrop-blur-sm">
             <CardContent className="p-6">
+              {/* Toggle between URL and QR */}
+              <div className="flex justify-center mb-4">
+                <div className="flex bg-gray-100 rounded-lg p-1">
+                  <button
+                    onClick={() => setOutputType("url")}
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-all ${
+                      outputType === "url"
+                        ? "bg-white shadow-sm text-blue-600"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    <Link className="w-4 h-4" />
+                    <span className="text-sm font-medium">Short URL</span>
+                  </button>
+                  <button
+                    onClick={() => setOutputType("qr")}
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-md transition-all ${
+                      outputType === "qr"
+                        ? "bg-white shadow-sm text-purple-600"
+                        : "text-gray-600 hover:text-gray-900"
+                    }`}
+                  >
+                    <QrCode className="w-4 h-4" />
+                    <span className="text-sm font-medium">QR Code</span>
+                  </button>
+                </div>
+              </div>
+
               <div className="flex flex-col md:flex-row gap-3">
                 <Input
                   placeholder="Paste your long URL here..."
@@ -94,12 +122,12 @@ export default function Index() {
                   onChange={(e) => setUrl(e.target.value)}
                   className="flex-1 h-12 text-lg border-gray-200 focus:border-blue-500"
                 />
-                <Button 
+                <Button
                   onClick={handleShorten}
                   className="h-12 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                   disabled={!url}
                 >
-                  Shorten URL
+                  {outputType === "url" ? "Shorten URL" : "Generate QR"}
                 </Button>
               </div>
               
