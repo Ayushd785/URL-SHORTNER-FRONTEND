@@ -434,6 +434,42 @@ export default function Links() {
                       </TableCell>
                       
                       <TableCell>
+                        <div className="flex items-center space-x-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => {
+                              const qrWindow = window.open('', '_blank', 'width=400,height=400');
+                              if (qrWindow) {
+                                qrWindow.document.write(`
+                                  <html>
+                                    <head><title>QR Code - ${link.shortCode}</title></head>
+                                    <body style="margin:0;padding:20px;text-align:center;font-family:Arial,sans-serif;">
+                                      <h3>QR Code for ${link.shortUrl}</h3>
+                                      <img src="${generateQRCode(link.originalUrl)}" alt="QR Code" style="border:1px solid #ccc;border-radius:8px;" />
+                                      <p style="margin-top:20px;font-size:12px;color:#666;">Scan to visit: ${link.originalUrl}</p>
+                                    </body>
+                                  </html>
+                                `);
+                              }
+                            }}
+                            className="flex items-center space-x-1"
+                          >
+                            <QrCode className="w-3 h-3" />
+                            <span className="text-xs">View</span>
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            onClick={() => downloadQRCode(link.originalUrl, link.shortCode)}
+                            className="flex items-center space-x-1 text-xs"
+                          >
+                            <Download className="w-3 h-3" />
+                          </Button>
+                        </div>
+                      </TableCell>
+
+                      <TableCell>
                         <div>
                           <p className="text-sm text-gray-900">
                             {new Date(link.createdAt).toLocaleDateString()}
