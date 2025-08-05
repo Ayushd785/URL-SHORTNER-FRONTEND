@@ -126,6 +126,29 @@ export default function Dashboard() {
     navigator.clipboard.writeText(text);
   };
 
+  const downloadQRCode = () => {
+    if (generatedQRCode) {
+      const link = document.createElement('a');
+      link.href = generatedQRCode;
+      link.download = 'qr-code.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const resetForm = () => {
+    setUrl("");
+    setCustomAlias("");
+    setPassword("");
+    setDescription("");
+    setUsePassword(false);
+    setUseCustomAlias(false);
+    setShortUrl("");
+    setGeneratedQRCode("");
+    setOutputType("url");
+  };
+
   const totalClicks = links.reduce((sum, link) => sum + link.clicks, 0);
 
   return (
