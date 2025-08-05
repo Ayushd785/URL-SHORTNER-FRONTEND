@@ -22,6 +22,7 @@ import {
   QrCode,
   Download
 } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
