@@ -307,7 +307,10 @@ export default function Index() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
+              <div
+                className="flex items-center space-x-2 mb-4 cursor-pointer hover:opacity-80 transition-opacity"
+                onClick={() => navigate('/dashboard')}
+              >
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                   <Link className="w-5 h-5 text-white" />
                 </div>
