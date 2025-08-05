@@ -1,17 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { 
-  Link as LinkIcon, 
-  Settings as SettingsIcon, 
-  LogOut, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Link as LinkIcon,
+  Settings as SettingsIcon,
+  LogOut,
   Upload,
   User,
   Camera,
@@ -24,7 +36,7 @@ import {
   Trash2,
   Download,
   Globe,
-  Shield
+  Shield,
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -36,32 +48,32 @@ export default function Settings() {
     email: "john.doe@example.com",
     avatar: "",
     plan: "Pro Plan",
-    memberSince: "January 2024"
+    memberSince: "January 2024",
   });
 
   const [profileData, setProfileData] = useState({
     firstName: userProfile.firstName,
     lastName: userProfile.lastName,
-    email: userProfile.email
+    email: userProfile.email,
   });
 
   const [passwordData, setPasswordData] = useState({
     currentPassword: "",
     newPassword: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
 
   const [preferences, setPreferences] = useState({
     emailNotifications: true,
     clickTracking: true,
     publicProfile: false,
-    twoFactorAuth: false
+    twoFactorAuth: false,
   });
 
   const [showPasswords, setShowPasswords] = useState({
     current: false,
     new: false,
-    confirm: false
+    confirm: false,
   });
 
   const [selectedAvatar, setSelectedAvatar] = useState("user");
@@ -76,13 +88,13 @@ export default function Settings() {
     { id: "developer", emoji: "👨‍💻", name: "Developer" },
     { id: "artist", emoji: "🧑‍🎨", name: "Artist" },
     { id: "business", emoji: "👨‍💼", name: "Business" },
-    { id: "student", emoji: "👨‍🎓", name: "Student" }
+    { id: "student", emoji: "👨‍🎓", name: "Student" },
   ];
 
   const handleProfileUpdate = () => {
-    setUserProfile(prev => ({
+    setUserProfile((prev) => ({
       ...prev,
-      ...profileData
+      ...profileData,
     }));
     // API call would go here
   };
@@ -96,7 +108,7 @@ export default function Settings() {
     setPasswordData({
       currentPassword: "",
       newPassword: "",
-      confirmPassword: ""
+      confirmPassword: "",
     });
   };
 
@@ -108,9 +120,9 @@ export default function Settings() {
       setTimeout(() => {
         const reader = new FileReader();
         reader.onload = (e) => {
-          setUserProfile(prev => ({
+          setUserProfile((prev) => ({
             ...prev,
-            avatar: e.target?.result as string
+            avatar: e.target?.result as string,
           }));
           setIsUploading(false);
         };
@@ -121,11 +133,11 @@ export default function Settings() {
 
   const handleAvatarSelect = (avatarId: string) => {
     setSelectedAvatar(avatarId);
-    const selectedOption = avatarOptions.find(opt => opt.id === avatarId);
+    const selectedOption = avatarOptions.find((opt) => opt.id === avatarId);
     if (selectedOption) {
-      setUserProfile(prev => ({
+      setUserProfile((prev) => ({
         ...prev,
-        avatar: selectedOption.emoji
+        avatar: selectedOption.emoji,
       }));
     }
   };
@@ -139,9 +151,9 @@ export default function Settings() {
       {/* Header */}
       <header className="bg-white border-b shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div 
+          <div
             className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <LinkIcon className="w-5 h-5 text-white" />
@@ -151,11 +163,11 @@ export default function Settings() {
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" onClick={() => navigate('/dashboard')}>
+            <Button variant="ghost" onClick={() => navigate("/dashboard")}>
               <BarChart3 className="w-4 h-4 mr-2" />
               Dashboard
             </Button>
-            <Button variant="ghost" onClick={() => navigate('/links')}>
+            <Button variant="ghost" onClick={() => navigate("/links")}>
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
             </Button>
@@ -166,21 +178,29 @@ export default function Settings() {
           </nav>
           <div className="flex items-center space-x-3">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-medium text-gray-900">{userProfile.firstName} {userProfile.lastName}</p>
+              <p className="text-sm font-medium text-gray-900">
+                {userProfile.firstName} {userProfile.lastName}
+              </p>
               <p className="text-xs text-gray-500">{userProfile.plan}</p>
             </div>
             <Avatar className="w-8 h-8">
-              {userProfile.avatar && userProfile.avatar.startsWith('data:') ? (
+              {userProfile.avatar && userProfile.avatar.startsWith("data:") ? (
                 <AvatarImage src={userProfile.avatar} />
               ) : userProfile.avatar ? (
                 <div className="w-full h-full flex items-center justify-center text-lg">
                   {userProfile.avatar}
                 </div>
               ) : (
-                <AvatarFallback>{getInitials(userProfile.firstName, userProfile.lastName)}</AvatarFallback>
+                <AvatarFallback>
+                  {getInitials(userProfile.firstName, userProfile.lastName)}
+                </AvatarFallback>
               )}
             </Avatar>
-            <Button variant="ghost" size="icon" onClick={() => navigate('/login')}>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => navigate("/login")}
+            >
               <LogOut className="w-4 h-4" />
             </Button>
           </div>
@@ -191,8 +211,12 @@ export default function Settings() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Account Settings</h1>
-            <p className="text-gray-600">Manage your account preferences and profile information</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+              Account Settings
+            </h1>
+            <p className="text-gray-600">
+              Manage your account preferences and profile information
+            </p>
           </div>
 
           <Tabs defaultValue="profile" className="space-y-6">
@@ -216,7 +240,8 @@ export default function Settings() {
                   {/* Avatar Section */}
                   <div className="flex items-center space-x-6">
                     <Avatar className="w-24 h-24">
-                      {userProfile.avatar && userProfile.avatar.startsWith('data:') ? (
+                      {userProfile.avatar &&
+                      userProfile.avatar.startsWith("data:") ? (
                         <AvatarImage src={userProfile.avatar} />
                       ) : userProfile.avatar ? (
                         <div className="w-full h-full flex items-center justify-center text-4xl">
@@ -224,17 +249,29 @@ export default function Settings() {
                         </div>
                       ) : (
                         <AvatarFallback className="text-xl">
-                          {getInitials(userProfile.firstName, userProfile.lastName)}
+                          {getInitials(
+                            userProfile.firstName,
+                            userProfile.lastName,
+                          )}
                         </AvatarFallback>
                       )}
                     </Avatar>
                     <div className="space-y-3">
                       <div>
-                        <h3 className="text-lg font-medium text-gray-900">Profile Picture</h3>
-                        <p className="text-sm text-gray-500">Choose an avatar or upload a custom image</p>
+                        <h3 className="text-lg font-medium text-gray-900">
+                          Profile Picture
+                        </h3>
+                        <p className="text-sm text-gray-500">
+                          Choose an avatar or upload a custom image
+                        </p>
                       </div>
                       <div className="flex space-x-3">
-                        <Button variant="outline" onClick={() => document.getElementById('avatar-upload')?.click()}>
+                        <Button
+                          variant="outline"
+                          onClick={() =>
+                            document.getElementById("avatar-upload")?.click()
+                          }
+                        >
                           <Upload className="w-4 h-4 mr-2" />
                           {isUploading ? "Uploading..." : "Upload Photo"}
                         </Button>
@@ -251,7 +288,9 @@ export default function Settings() {
 
                   {/* Avatar Options */}
                   <div>
-                    <Label className="text-sm font-medium mb-3 block">Choose an Avatar</Label>
+                    <Label className="text-sm font-medium mb-3 block">
+                      Choose an Avatar
+                    </Label>
                     <div className="grid grid-cols-4 md:grid-cols-8 gap-3">
                       {avatarOptions.map((option) => (
                         <button
@@ -264,7 +303,9 @@ export default function Settings() {
                           }`}
                         >
                           <div className="text-2xl">{option.emoji}</div>
-                          <div className="text-xs text-gray-600 mt-1">{option.name}</div>
+                          <div className="text-xs text-gray-600 mt-1">
+                            {option.name}
+                          </div>
                         </button>
                       ))}
                     </div>
@@ -279,7 +320,12 @@ export default function Settings() {
                       <Input
                         id="firstName"
                         value={profileData.firstName}
-                        onChange={(e) => setProfileData(prev => ({ ...prev, firstName: e.target.value }))}
+                        onChange={(e) =>
+                          setProfileData((prev) => ({
+                            ...prev,
+                            firstName: e.target.value,
+                          }))
+                        }
                       />
                     </div>
                     <div className="space-y-2">
@@ -287,7 +333,12 @@ export default function Settings() {
                       <Input
                         id="lastName"
                         value={profileData.lastName}
-                        onChange={(e) => setProfileData(prev => ({ ...prev, lastName: e.target.value }))}
+                        onChange={(e) =>
+                          setProfileData((prev) => ({
+                            ...prev,
+                            lastName: e.target.value,
+                          }))
+                        }
                       />
                     </div>
                   </div>
@@ -298,7 +349,12 @@ export default function Settings() {
                       id="email"
                       type="email"
                       value={profileData.email}
-                      onChange={(e) => setProfileData(prev => ({ ...prev, email: e.target.value }))}
+                      onChange={(e) =>
+                        setProfileData((prev) => ({
+                          ...prev,
+                          email: e.target.value,
+                        }))
+                      }
                     />
                   </div>
 
@@ -330,16 +386,30 @@ export default function Settings() {
                           id="currentPassword"
                           type={showPasswords.current ? "text" : "password"}
                           value={passwordData.currentPassword}
-                          onChange={(e) => setPasswordData(prev => ({ ...prev, currentPassword: e.target.value }))}
+                          onChange={(e) =>
+                            setPasswordData((prev) => ({
+                              ...prev,
+                              currentPassword: e.target.value,
+                            }))
+                          }
                         />
                         <Button
                           type="button"
                           variant="ghost"
                           size="sm"
                           className="absolute right-0 top-0 h-full px-3 py-2"
-                          onClick={() => setShowPasswords(prev => ({ ...prev, current: !prev.current }))}
+                          onClick={() =>
+                            setShowPasswords((prev) => ({
+                              ...prev,
+                              current: !prev.current,
+                            }))
+                          }
                         >
-                          {showPasswords.current ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          {showPasswords.current ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
                         </Button>
                       </div>
                     </div>
@@ -351,37 +421,67 @@ export default function Settings() {
                           id="newPassword"
                           type={showPasswords.new ? "text" : "password"}
                           value={passwordData.newPassword}
-                          onChange={(e) => setPasswordData(prev => ({ ...prev, newPassword: e.target.value }))}
+                          onChange={(e) =>
+                            setPasswordData((prev) => ({
+                              ...prev,
+                              newPassword: e.target.value,
+                            }))
+                          }
                         />
                         <Button
                           type="button"
                           variant="ghost"
                           size="sm"
                           className="absolute right-0 top-0 h-full px-3 py-2"
-                          onClick={() => setShowPasswords(prev => ({ ...prev, new: !prev.new }))}
+                          onClick={() =>
+                            setShowPasswords((prev) => ({
+                              ...prev,
+                              new: !prev.new,
+                            }))
+                          }
                         >
-                          {showPasswords.new ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          {showPasswords.new ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
                         </Button>
                       </div>
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="confirmPassword">Confirm New Password</Label>
+                      <Label htmlFor="confirmPassword">
+                        Confirm New Password
+                      </Label>
                       <div className="relative">
                         <Input
                           id="confirmPassword"
                           type={showPasswords.confirm ? "text" : "password"}
                           value={passwordData.confirmPassword}
-                          onChange={(e) => setPasswordData(prev => ({ ...prev, confirmPassword: e.target.value }))}
+                          onChange={(e) =>
+                            setPasswordData((prev) => ({
+                              ...prev,
+                              confirmPassword: e.target.value,
+                            }))
+                          }
                         />
                         <Button
                           type="button"
                           variant="ghost"
                           size="sm"
                           className="absolute right-0 top-0 h-full px-3 py-2"
-                          onClick={() => setShowPasswords(prev => ({ ...prev, confirm: !prev.confirm }))}
+                          onClick={() =>
+                            setShowPasswords((prev) => ({
+                              ...prev,
+                              confirm: !prev.confirm,
+                            }))
+                          }
                         >
-                          {showPasswords.confirm ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                          {showPasswords.confirm ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
                         </Button>
                       </div>
                     </div>
@@ -406,12 +506,21 @@ export default function Settings() {
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="font-medium">Enable Two-Factor Authentication</h4>
-                      <p className="text-sm text-gray-500">Use an authenticator app to secure your account</p>
+                      <h4 className="font-medium">
+                        Enable Two-Factor Authentication
+                      </h4>
+                      <p className="text-sm text-gray-500">
+                        Use an authenticator app to secure your account
+                      </p>
                     </div>
                     <Switch
                       checked={preferences.twoFactorAuth}
-                      onCheckedChange={(checked) => setPreferences(prev => ({ ...prev, twoFactorAuth: checked }))}
+                      onCheckedChange={(checked) =>
+                        setPreferences((prev) => ({
+                          ...prev,
+                          twoFactorAuth: checked,
+                        }))
+                      }
                     />
                   </div>
                 </CardContent>
@@ -432,33 +541,54 @@ export default function Settings() {
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Email Notifications</h4>
-                        <p className="text-sm text-gray-500">Receive email updates about your links</p>
+                        <p className="text-sm text-gray-500">
+                          Receive email updates about your links
+                        </p>
                       </div>
                       <Switch
                         checked={preferences.emailNotifications}
-                        onCheckedChange={(checked) => setPreferences(prev => ({ ...prev, emailNotifications: checked }))}
+                        onCheckedChange={(checked) =>
+                          setPreferences((prev) => ({
+                            ...prev,
+                            emailNotifications: checked,
+                          }))
+                        }
                       />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Click Tracking</h4>
-                        <p className="text-sm text-gray-500">Track detailed analytics for your links</p>
+                        <p className="text-sm text-gray-500">
+                          Track detailed analytics for your links
+                        </p>
                       </div>
                       <Switch
                         checked={preferences.clickTracking}
-                        onCheckedChange={(checked) => setPreferences(prev => ({ ...prev, clickTracking: checked }))}
+                        onCheckedChange={(checked) =>
+                          setPreferences((prev) => ({
+                            ...prev,
+                            clickTracking: checked,
+                          }))
+                        }
                       />
                     </div>
 
                     <div className="flex items-center justify-between">
                       <div>
                         <h4 className="font-medium">Public Profile</h4>
-                        <p className="text-sm text-gray-500">Make your profile visible to other users</p>
+                        <p className="text-sm text-gray-500">
+                          Make your profile visible to other users
+                        </p>
                       </div>
                       <Switch
                         checked={preferences.publicProfile}
-                        onCheckedChange={(checked) => setPreferences(prev => ({ ...prev, publicProfile: checked }))}
+                        onCheckedChange={(checked) =>
+                          setPreferences((prev) => ({
+                            ...prev,
+                            publicProfile: checked,
+                          }))
+                        }
                       />
                     </div>
                   </div>
@@ -478,7 +608,9 @@ export default function Settings() {
                 <CardContent className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <Label className="text-sm font-medium text-gray-500">Current Plan</Label>
+                      <Label className="text-sm font-medium text-gray-500">
+                        Current Plan
+                      </Label>
                       <div className="flex items-center space-x-2 mt-1">
                         <Badge variant="default">{userProfile.plan}</Badge>
                         <Button variant="link" className="px-0 h-auto text-sm">
@@ -487,8 +619,12 @@ export default function Settings() {
                       </div>
                     </div>
                     <div>
-                      <Label className="text-sm font-medium text-gray-500">Member Since</Label>
-                      <p className="text-sm text-gray-900 mt-1">{userProfile.memberSince}</p>
+                      <Label className="text-sm font-medium text-gray-500">
+                        Member Since
+                      </Label>
+                      <p className="text-sm text-gray-900 mt-1">
+                        {userProfile.memberSince}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
@@ -505,7 +641,9 @@ export default function Settings() {
                   <div className="flex items-center justify-between p-4 border rounded-lg">
                     <div>
                       <h4 className="font-medium">Export Data</h4>
-                      <p className="text-sm text-gray-500">Download all your links and analytics data</p>
+                      <p className="text-sm text-gray-500">
+                        Download all your links and analytics data
+                      </p>
                     </div>
                     <Button variant="outline">
                       <Download className="w-4 h-4 mr-2" />
@@ -515,8 +653,12 @@ export default function Settings() {
 
                   <div className="flex items-center justify-between p-4 border border-red-200 rounded-lg bg-red-50">
                     <div>
-                      <h4 className="font-medium text-red-900">Delete Account</h4>
-                      <p className="text-sm text-red-600">Permanently delete your account and all data</p>
+                      <h4 className="font-medium text-red-900">
+                        Delete Account
+                      </h4>
+                      <p className="text-sm text-red-600">
+                        Permanently delete your account and all data
+                      </p>
                     </div>
                     <Button variant="destructive">
                       <Trash2 className="w-4 h-4 mr-2" />

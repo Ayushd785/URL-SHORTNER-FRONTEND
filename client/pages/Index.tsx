@@ -2,7 +2,23 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Link, Copy, BarChart3, Shield, Zap, Globe, QrCode, Users, Lightbulb, Target, Heart, Github, Linkedin, Twitter, Mail } from "lucide-react";
+import {
+  Link,
+  Copy,
+  BarChart3,
+  Shield,
+  Zap,
+  Globe,
+  QrCode,
+  Users,
+  Lightbulb,
+  Target,
+  Heart,
+  Github,
+  Linkedin,
+  Twitter,
+  Mail,
+} from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -45,7 +61,7 @@ export default function Index() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div
             className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <Link className="w-5 h-5 text-white" />
@@ -55,22 +71,30 @@ export default function Index() {
             </span>
           </div>
           <div className="hidden md:flex items-center space-x-6">
-            <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors">Features</a>
+            <a
+              href="#features"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Features
+            </a>
             <button
-              onClick={() => navigate('/pricing')}
+              onClick={() => navigate("/pricing")}
               className="text-gray-600 hover:text-gray-900 transition-colors"
             >
               Pricing
             </button>
-            <a href="#about" className="text-gray-600 hover:text-gray-900 transition-colors">About</a>
+            <a
+              href="#about"
+              className="text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              About
+            </a>
           </div>
           <div className="flex items-center space-x-3">
-            <Button variant="ghost" onClick={() => navigate('/login')}>
+            <Button variant="ghost" onClick={() => navigate("/login")}>
               Sign In
             </Button>
-            <Button onClick={() => navigate('/signup')}>
-              Get Started
-            </Button>
+            <Button onClick={() => navigate("/signup")}>Get Started</Button>
           </div>
         </div>
       </header>
@@ -84,12 +108,14 @@ export default function Index() {
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Shorten URLs &
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {" "}Generate QR Codes
+              {" "}
+              Generate QR Codes
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Create branded short links, generate QR codes, track clicks in real-time, and protect your URLs with passwords.
-            The most powerful URL shortener and QR code generator for businesses and creators.
+            Create branded short links, generate QR codes, track clicks in
+            real-time, and protect your URLs with passwords. The most powerful
+            URL shortener and QR code generator for businesses and creators.
           </p>
 
           {/* URL Shortener Widget */}
@@ -138,7 +164,7 @@ export default function Index() {
                   {outputType === "url" ? "Shorten URL" : "Generate QR"}
                 </Button>
               </div>
-              
+
               {shortUrl && (
                 <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-between">
                   <span className="text-blue-800 font-medium">{shortUrl}</span>
@@ -156,7 +182,9 @@ export default function Index() {
               {qrCode && (
                 <div className="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
                   <div className="flex flex-col items-center space-y-3">
-                    <span className="text-purple-800 font-medium text-sm">Your QR Code is ready!</span>
+                    <span className="text-purple-800 font-medium text-sm">
+                      Your QR Code is ready!
+                    </span>
                     <img
                       src={qrCode}
                       alt="Generated QR Code"
@@ -185,7 +213,8 @@ export default function Index() {
               Why Choose LinklyPro?
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Advanced features designed for modern businesses and content creators
+              Advanced features designed for modern businesses and content
+              creators
             </p>
           </div>
 
@@ -195,9 +224,12 @@ export default function Index() {
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
                   <BarChart3 className="w-6 h-6 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Real-time Analytics</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  Real-time Analytics
+                </h3>
                 <p className="text-gray-600">
-                  Track clicks, geographic data, referrers, and device information in real-time.
+                  Track clicks, geographic data, referrers, and device
+                  information in real-time.
                 </p>
               </CardContent>
             </Card>
@@ -207,9 +239,12 @@ export default function Index() {
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
                   <Shield className="w-6 h-6 text-purple-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Password Protection</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  Password Protection
+                </h3>
                 <p className="text-gray-600">
-                  Secure your links with custom passwords and control who can access them.
+                  Secure your links with custom passwords and control who can
+                  access them.
                 </p>
               </CardContent>
             </Card>
@@ -219,9 +254,12 @@ export default function Index() {
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                   <QrCode className="w-6 h-6 text-green-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">QR Code Generator</h3>
+                <h3 className="text-xl font-semibold mb-2">
+                  QR Code Generator
+                </h3>
                 <p className="text-gray-600">
-                  Generate high-quality QR codes for any URL, perfect for print materials and mobile sharing.
+                  Generate high-quality QR codes for any URL, perfect for print
+                  materials and mobile sharing.
                 </p>
               </CardContent>
             </Card>
@@ -233,7 +271,8 @@ export default function Index() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Custom Domains</h3>
                 <p className="text-gray-600">
-                  Use your own domain to build trust and strengthen your brand identity.
+                  Use your own domain to build trust and strengthen your brand
+                  identity.
                 </p>
               </CardContent>
             </Card>
@@ -257,7 +296,8 @@ export default function Index() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Bulk Management</h3>
                 <p className="text-gray-600">
-                  Create, edit, and manage thousands of links with our bulk tools.
+                  Create, edit, and manage thousands of links with our bulk
+                  tools.
                 </p>
               </CardContent>
             </Card>
@@ -269,7 +309,8 @@ export default function Index() {
                 </div>
                 <h3 className="text-xl font-semibold mb-2">API Access</h3>
                 <p className="text-gray-600">
-                  Integrate with your existing tools using our comprehensive API.
+                  Integrate with your existing tools using our comprehensive
+                  API.
                 </p>
               </CardContent>
             </Card>
@@ -278,15 +319,20 @@ export default function Index() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+      <section
+        id="about"
+        className="py-20 bg-gradient-to-br from-gray-50 to-blue-50"
+      >
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               About LinklyPro
             </h2>
             <p className="text-xl text-gray-600 leading-relaxed">
-              Born from the need for a powerful yet simple URL management solution, LinklyPro combines
-              cutting-edge technology with intuitive design to deliver the ultimate link shortening experience.
+              Born from the need for a powerful yet simple URL management
+              solution, LinklyPro combines cutting-edge technology with
+              intuitive design to deliver the ultimate link shortening
+              experience.
             </p>
           </div>
 
@@ -297,8 +343,9 @@ export default function Index() {
               </div>
               <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
               <p className="text-gray-600">
-                To simplify digital communication by making every link shorter, smarter, and more secure.
-                We believe powerful tools should be accessible to everyone.
+                To simplify digital communication by making every link shorter,
+                smarter, and more secure. We believe powerful tools should be
+                accessible to everyone.
               </p>
             </div>
 
@@ -308,8 +355,9 @@ export default function Index() {
               </div>
               <h3 className="text-xl font-semibold mb-4">Innovation</h3>
               <p className="text-gray-600">
-                We continuously push the boundaries of what's possible with URL shortening, adding QR codes,
-                advanced analytics, and smart features you won't find elsewhere.
+                We continuously push the boundaries of what's possible with URL
+                shortening, adding QR codes, advanced analytics, and smart
+                features you won't find elsewhere.
               </p>
             </div>
 
@@ -319,8 +367,9 @@ export default function Index() {
               </div>
               <h3 className="text-xl font-semibold mb-4">Community</h3>
               <p className="text-gray-600">
-                Built for creators, marketers, and businesses worldwide. We're trusted by over 10 million users
-                who rely on us for their most important campaigns.
+                Built for creators, marketers, and businesses worldwide. We're
+                trusted by over 10 million users who rely on us for their most
+                important campaigns.
               </p>
             </div>
           </div>
@@ -386,36 +435,56 @@ export default function Index() {
                   </h3>
                   <div className="text-lg text-gray-600 mb-6 leading-relaxed">
                     <p className="mb-4">
-                      I'm a passionate full-stack developer with a love for creating tools that make life easier.
-                      LinklyPro started as a personal project when I needed a reliable URL shortener for my own projects.
+                      I'm a passionate full-stack developer with a love for
+                      creating tools that make life easier. LinklyPro started as
+                      a personal project when I needed a reliable URL shortener
+                      for my own projects.
                     </p>
                     <p className="mb-4">
                       <em className="text-gray-500 text-base">
-                        "I believe great software should be powerful yet simple, beautiful yet functional.
-                        Every feature in LinklyPro is designed with real users in mind."
+                        "I believe great software should be powerful yet simple,
+                        beautiful yet functional. Every feature in LinklyPro is
+                        designed with real users in mind."
                       </em>
                     </p>
                     <p>
-                      When I'm not coding, you'll find me exploring new technologies, contributing to open source,
-                      or sharing my knowledge with the developer community.
+                      When I'm not coding, you'll find me exploring new
+                      technologies, contributing to open source, or sharing my
+                      knowledge with the developer community.
                     </p>
                   </div>
 
                   {/* Social Links */}
                   <div className="flex justify-center md:justify-start space-x-4">
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
                       <Github className="w-4 h-4" />
                       <span>GitHub</span>
                     </Button>
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
                       <Linkedin className="w-4 h-4" />
                       <span>LinkedIn</span>
                     </Button>
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
                       <Twitter className="w-4 h-4" />
                       <span>Twitter</span>
                     </Button>
-                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="flex items-center space-x-2"
+                    >
                       <Mail className="w-4 h-4" />
                       <span>Contact</span>
                     </Button>
@@ -427,8 +496,19 @@ export default function Index() {
                       Built with love using
                     </h4>
                     <div className="flex flex-wrap justify-center md:justify-start gap-2">
-                      {['React', 'TypeScript', 'Node.js', 'TailwindCSS', 'Vite', 'Express'].map((tech) => (
-                        <Badge key={tech} variant="secondary" className="bg-white/50">
+                      {[
+                        "React",
+                        "TypeScript",
+                        "Node.js",
+                        "TailwindCSS",
+                        "Vite",
+                        "Express",
+                      ].map((tech) => (
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="bg-white/50"
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -443,10 +523,14 @@ export default function Index() {
                   <Heart className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
                   <div>
                     <p className="text-gray-700 italic">
-                      "Building LinklyPro has been an incredible journey. Seeing millions of users create and share
-                      their content more effectively drives me to keep innovating and improving the platform every day."
+                      "Building LinklyPro has been an incredible journey. Seeing
+                      millions of users create and share their content more
+                      effectively drives me to keep innovating and improving the
+                      platform every day."
                     </p>
-                    <p className="text-sm text-gray-500 mt-2 font-medium">— Ayush, Founder & Developer</p>
+                    <p className="text-sm text-gray-500 mt-2 font-medium">
+                      — Ayush, Founder & Developer
+                    </p>
                   </div>
                 </div>
               </div>
@@ -462,21 +546,22 @@ export default function Index() {
             Ready to Start Shortening?
           </h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Join millions of users who trust LinklyPro for their URL shortening needs.
+            Join millions of users who trust LinklyPro for their URL shortening
+            needs.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="secondary"
-              onClick={() => navigate('/signup')}
+              onClick={() => navigate("/signup")}
               className="text-lg px-8 py-3"
             >
               Start Free Trial
             </Button>
-            <Button 
-              size="lg" 
+            <Button
+              size="lg"
               variant="outline"
-              onClick={() => navigate('/dashboard')}
+              onClick={() => navigate("/dashboard")}
               className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600"
             >
               View Dashboard
@@ -492,7 +577,7 @@ export default function Index() {
             <div>
               <div
                 className="flex items-center space-x-2 mb-4 cursor-pointer hover:opacity-80 transition-opacity"
-                onClick={() => navigate('/')}
+                onClick={() => navigate("/")}
               >
                 <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
                   <Link className="w-5 h-5 text-white" />
@@ -506,25 +591,61 @@ export default function Index() {
             <div>
               <h4 className="font-semibold mb-4">Product</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API</a></li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Features
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Pricing
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    API
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Company</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Support</a></li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    About
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Support
+                  </a>
+                </li>
               </ul>
             </div>
             <div>
               <h4 className="font-semibold mb-4">Legal</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Security</a></li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Privacy
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Terms
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="hover:text-white transition-colors">
+                    Security
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

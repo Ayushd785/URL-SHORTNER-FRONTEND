@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
@@ -20,7 +26,7 @@ import {
   ExternalLink,
   TrendingUp,
   QrCode,
-  Download
+  Download,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
@@ -56,7 +62,7 @@ export default function Dashboard() {
     lastName: "Doe",
     email: "john.doe@example.com",
     avatar: "👨‍💻",
-    plan: "Pro Plan"
+    plan: "Pro Plan",
   });
 
   const navigate = useNavigate();
@@ -75,7 +81,7 @@ export default function Dashboard() {
       clicks: 147,
       createdAt: "2024-01-15",
       hasPassword: false,
-      isActive: true
+      isActive: true,
     },
     {
       id: "2",
@@ -85,7 +91,7 @@ export default function Dashboard() {
       clicks: 89,
       createdAt: "2024-01-14",
       hasPassword: true,
-      isActive: true
+      isActive: true,
     },
     {
       id: "3",
@@ -95,8 +101,8 @@ export default function Dashboard() {
       clicks: 256,
       createdAt: "2024-01-13",
       hasPassword: false,
-      isActive: true
-    }
+      isActive: true,
+    },
   ]);
 
   const generateQRCode = (text: string) => {
@@ -143,9 +149,9 @@ export default function Dashboard() {
 
   const downloadQRCode = () => {
     if (generatedQRCode) {
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = generatedQRCode;
-      link.download = 'qr-code.png';
+      link.download = "qr-code.png";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -173,7 +179,7 @@ export default function Dashboard() {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div
             className="flex items-center space-x-2 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => navigate('/')}
+            onClick={() => navigate("/")}
           >
             <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
               <LinkIcon className="w-5 h-5 text-white" />
@@ -187,32 +193,40 @@ export default function Dashboard() {
               <BarChart3 className="w-4 h-4 mr-2" />
               Analytics
             </Button>
-            <Button variant="ghost" onClick={() => navigate('/links')}>
+            <Button variant="ghost" onClick={() => navigate("/links")}>
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
             </Button>
-            <Button variant="ghost" onClick={() => navigate('/settings')}>
+            <Button variant="ghost" onClick={() => navigate("/settings")}>
               <Settings className="w-4 h-4 mr-2" />
               Settings
             </Button>
           </nav>
           <div className="flex items-center space-x-3">
             <div className="text-right hidden sm:block">
-              <p className="text-sm font-medium text-gray-900">{userData.firstName} {userData.lastName}</p>
+              <p className="text-sm font-medium text-gray-900">
+                {userData.firstName} {userData.lastName}
+              </p>
               <p className="text-xs text-gray-500">{userData.plan}</p>
             </div>
             <Avatar className="w-8 h-8">
-              {userData.avatar && userData.avatar.startsWith('data:') ? (
+              {userData.avatar && userData.avatar.startsWith("data:") ? (
                 <AvatarImage src={userData.avatar} />
               ) : userData.avatar ? (
                 <div className="w-full h-full flex items-center justify-center text-lg">
                   {userData.avatar}
                 </div>
               ) : (
-                <AvatarFallback>{getInitials(userData.firstName, userData.lastName)}</AvatarFallback>
+                <AvatarFallback>
+                  {getInitials(userData.firstName, userData.lastName)}
+                </AvatarFallback>
               )}
             </Avatar>
-            <Button variant="ghost" size="icon" onClick={() => navigate('/login')}>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => navigate("/login")}
+            >
               <LogOut className="w-4 h-4" />
             </Button>
           </div>
@@ -226,8 +240,12 @@ export default function Dashboard() {
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Total Links</p>
-                  <p className="text-2xl font-bold text-gray-900">{links.length}</p>
+                  <p className="text-sm font-medium text-gray-600">
+                    Total Links
+                  </p>
+                  <p className="text-2xl font-bold text-gray-900">
+                    {links.length}
+                  </p>
                 </div>
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                   <LinkIcon className="w-6 h-6 text-blue-600" />
@@ -235,13 +253,17 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Total Clicks</p>
-                  <p className="text-2xl font-bold text-gray-900">{totalClicks.toLocaleString()}</p>
+                  <p className="text-sm font-medium text-gray-600">
+                    Total Clicks
+                  </p>
+                  <p className="text-2xl font-bold text-gray-900">
+                    {totalClicks.toLocaleString()}
+                  </p>
                 </div>
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                   <TrendingUp className="w-6 h-6 text-green-600" />
@@ -249,12 +271,14 @@ export default function Dashboard() {
               </div>
             </CardContent>
           </Card>
-          
+
           <Card>
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">This Month</p>
+                  <p className="text-sm font-medium text-gray-600">
+                    This Month
+                  </p>
                   <p className="text-2xl font-bold text-gray-900">+24%</p>
                 </div>
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -274,7 +298,8 @@ export default function Dashboard() {
                 <span>Create New Short Link</span>
               </CardTitle>
               <CardDescription>
-                Shorten your URL and customize it with optional password protection
+                Shorten your URL and customize it with optional password
+                protection
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -294,64 +319,98 @@ export default function Dashboard() {
 
                 {/* Output Type Selection */}
                 <div className="space-y-3">
-                  <Label className="text-sm font-medium">What would you like to generate?</Label>
+                  <Label className="text-sm font-medium">
+                    What would you like to generate?
+                  </Label>
                   <div className="grid grid-cols-1 gap-3">
                     <div
                       className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                        outputType === "url" ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"
+                        outputType === "url"
+                          ? "border-blue-500 bg-blue-50"
+                          : "border-gray-200 hover:border-gray-300"
                       }`}
                       onClick={() => setOutputType("url")}
                     >
                       <div className="flex items-center space-x-3">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                          outputType === "url" ? "bg-blue-100" : "bg-gray-100"
-                        }`}>
-                          <LinkIcon className={`w-5 h-5 ${outputType === "url" ? "text-blue-600" : "text-gray-600"}`} />
+                        <div
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                            outputType === "url" ? "bg-blue-100" : "bg-gray-100"
+                          }`}
+                        >
+                          <LinkIcon
+                            className={`w-5 h-5 ${outputType === "url" ? "text-blue-600" : "text-gray-600"}`}
+                          />
                         </div>
                         <div>
-                          <h3 className="font-medium text-gray-900">Short URL</h3>
-                          <p className="text-sm text-gray-500">Generate a shortened link</p>
+                          <h3 className="font-medium text-gray-900">
+                            Short URL
+                          </h3>
+                          <p className="text-sm text-gray-500">
+                            Generate a shortened link
+                          </p>
                         </div>
                       </div>
                     </div>
 
                     <div
                       className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                        outputType === "qr" ? "border-purple-500 bg-purple-50" : "border-gray-200 hover:border-gray-300"
+                        outputType === "qr"
+                          ? "border-purple-500 bg-purple-50"
+                          : "border-gray-200 hover:border-gray-300"
                       }`}
                       onClick={() => setOutputType("qr")}
                     >
                       <div className="flex items-center space-x-3">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                          outputType === "qr" ? "bg-purple-100" : "bg-gray-100"
-                        }`}>
-                          <QrCode className={`w-5 h-5 ${outputType === "qr" ? "text-purple-600" : "text-gray-600"}`} />
+                        <div
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                            outputType === "qr"
+                              ? "bg-purple-100"
+                              : "bg-gray-100"
+                          }`}
+                        >
+                          <QrCode
+                            className={`w-5 h-5 ${outputType === "qr" ? "text-purple-600" : "text-gray-600"}`}
+                          />
                         </div>
                         <div>
                           <h3 className="font-medium text-gray-900">QR Code</h3>
-                          <p className="text-sm text-gray-500">Generate a QR code for the URL</p>
+                          <p className="text-sm text-gray-500">
+                            Generate a QR code for the URL
+                          </p>
                         </div>
                       </div>
                     </div>
 
                     <div
                       className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
-                        outputType === "both" ? "border-green-500 bg-green-50" : "border-gray-200 hover:border-gray-300"
+                        outputType === "both"
+                          ? "border-green-500 bg-green-50"
+                          : "border-gray-200 hover:border-gray-300"
                       }`}
                       onClick={() => setOutputType("both")}
                     >
                       <div className="flex items-center space-x-3">
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                          outputType === "both" ? "bg-green-100" : "bg-gray-100"
-                        }`}>
+                        <div
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                            outputType === "both"
+                              ? "bg-green-100"
+                              : "bg-gray-100"
+                          }`}
+                        >
                           <div className="flex space-x-1">
-                            <LinkIcon className={`w-4 h-4 ${outputType === "both" ? "text-green-600" : "text-gray-600"}`} />
-                            <QrCode className={`w-4 h-4 ${outputType === "both" ? "text-green-600" : "text-gray-600"}`} />
+                            <LinkIcon
+                              className={`w-4 h-4 ${outputType === "both" ? "text-green-600" : "text-gray-600"}`}
+                            />
+                            <QrCode
+                              className={`w-4 h-4 ${outputType === "both" ? "text-green-600" : "text-gray-600"}`}
+                            />
                           </div>
                         </div>
                         <div>
                           <h3 className="font-medium text-gray-900">Both</h3>
-                          <p className="text-sm text-gray-500">Generate both short URL and QR code</p>
+                          <p className="text-sm text-gray-500">
+                            Generate both short URL and QR code
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -360,7 +419,10 @@ export default function Dashboard() {
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="custom-alias" className="text-sm font-medium">
+                    <Label
+                      htmlFor="custom-alias"
+                      className="text-sm font-medium"
+                    >
                       Custom alias (optional)
                     </Label>
                     <Switch
@@ -384,7 +446,10 @@ export default function Dashboard() {
 
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="password-protection" className="text-sm font-medium">
+                    <Label
+                      htmlFor="password-protection"
+                      className="text-sm font-medium"
+                    >
                       Password protection
                     </Label>
                     <Switch
@@ -435,10 +500,13 @@ export default function Dashboard() {
                   className="w-full h-11 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                   disabled={isCreating || !url}
                 >
-                  {isCreating ? "Generating..." :
-                   outputType === "url" ? "Create Short Link" :
-                   outputType === "qr" ? "Generate QR Code" :
-                   "Generate Both"}
+                  {isCreating
+                    ? "Generating..."
+                    : outputType === "url"
+                      ? "Create Short Link"
+                      : outputType === "qr"
+                        ? "Generate QR Code"
+                        : "Generate Both"}
                 </Button>
               </form>
 
@@ -446,12 +514,10 @@ export default function Dashboard() {
               {(shortUrl || generatedQRCode) && (
                 <div className="mt-6 space-y-4 border-t pt-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-gray-900">Generated Results</h3>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={resetForm}
-                    >
+                    <h3 className="text-lg font-semibold text-gray-900">
+                      Generated Results
+                    </h3>
+                    <Button size="sm" variant="outline" onClick={resetForm}>
                       Create Another
                     </Button>
                   </div>
@@ -460,10 +526,14 @@ export default function Dashboard() {
                     <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
                       <div className="flex items-center space-x-2 mb-2">
                         <LinkIcon className="w-4 h-4 text-blue-600" />
-                        <span className="text-sm font-medium text-blue-800">Short URL</span>
+                        <span className="text-sm font-medium text-blue-800">
+                          Short URL
+                        </span>
                       </div>
                       <div className="flex items-center justify-between">
-                        <span className="text-blue-800 font-medium break-all">{shortUrl}</span>
+                        <span className="text-blue-800 font-medium break-all">
+                          {shortUrl}
+                        </span>
                         <Button
                           size="sm"
                           variant="outline"
@@ -480,7 +550,9 @@ export default function Dashboard() {
                     <div className="p-4 bg-purple-50 border border-purple-200 rounded-lg">
                       <div className="flex items-center space-x-2 mb-3">
                         <QrCode className="w-4 h-4 text-purple-600" />
-                        <span className="text-sm font-medium text-purple-800">QR Code</span>
+                        <span className="text-sm font-medium text-purple-800">
+                          QR Code
+                        </span>
                       </div>
                       <div className="flex flex-col items-center space-y-3">
                         <img
@@ -522,9 +594,11 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle>Recent Links</CardTitle>
-                  <CardDescription>Your recently created short links</CardDescription>
+                  <CardDescription>
+                    Your recently created short links
+                  </CardDescription>
                 </div>
-                <Button variant="outline" onClick={() => navigate('/links')}>
+                <Button variant="outline" onClick={() => navigate("/links")}>
                   View All
                 </Button>
               </div>
@@ -532,7 +606,10 @@ export default function Dashboard() {
             <CardContent>
               <div className="space-y-4">
                 {links.slice(0, 3).map((link) => (
-                  <div key={link.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors">
+                  <div
+                    key={link.id}
+                    className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+                  >
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center space-x-2 mb-1">
                         <p className="text-sm font-medium text-blue-600 truncate">
@@ -572,12 +649,14 @@ export default function Dashboard() {
                     </div>
                   </div>
                 ))}
-                
+
                 {links.length === 0 && (
                   <div className="text-center py-8">
                     <LinkIcon className="w-12 h-12 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500">No links created yet</p>
-                    <p className="text-sm text-gray-400">Create your first short link above</p>
+                    <p className="text-sm text-gray-400">
+                      Create your first short link above
+                    </p>
                   </div>
                 )}
               </div>
@@ -593,19 +672,31 @@ export default function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+              <Button
+                variant="outline"
+                className="h-auto p-4 flex flex-col items-center space-y-2"
+              >
                 <BarChart3 className="w-6 h-6 text-blue-600" />
                 <span className="text-sm font-medium">View Analytics</span>
               </Button>
-              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+              <Button
+                variant="outline"
+                className="h-auto p-4 flex flex-col items-center space-y-2"
+              >
                 <Settings className="w-6 h-6 text-gray-600" />
                 <span className="text-sm font-medium">Account Settings</span>
               </Button>
-              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+              <Button
+                variant="outline"
+                className="h-auto p-4 flex flex-col items-center space-y-2"
+              >
                 <LinkIcon className="w-6 h-6 text-purple-600" />
                 <span className="text-sm font-medium">Bulk Import</span>
               </Button>
-              <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
+              <Button
+                variant="outline"
+                className="h-auto p-4 flex flex-col items-center space-y-2"
+              >
                 <Calendar className="w-6 h-6 text-green-600" />
                 <span className="text-sm font-medium">Schedule Links</span>
               </Button>
