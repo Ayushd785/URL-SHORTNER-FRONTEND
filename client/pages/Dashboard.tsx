@@ -263,6 +263,72 @@ export default function Dashboard() {
                   />
                 </div>
 
+                {/* Output Type Selection */}
+                <div className="space-y-3">
+                  <Label className="text-sm font-medium">What would you like to generate?</Label>
+                  <div className="grid grid-cols-1 gap-3">
+                    <div
+                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        outputType === "url" ? "border-blue-500 bg-blue-50" : "border-gray-200 hover:border-gray-300"
+                      }`}
+                      onClick={() => setOutputType("url")}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                          outputType === "url" ? "bg-blue-100" : "bg-gray-100"
+                        }`}>
+                          <LinkIcon className={`w-5 h-5 ${outputType === "url" ? "text-blue-600" : "text-gray-600"}`} />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-gray-900">Short URL</h3>
+                          <p className="text-sm text-gray-500">Generate a shortened link</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        outputType === "qr" ? "border-purple-500 bg-purple-50" : "border-gray-200 hover:border-gray-300"
+                      }`}
+                      onClick={() => setOutputType("qr")}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                          outputType === "qr" ? "bg-purple-100" : "bg-gray-100"
+                        }`}>
+                          <QrCode className={`w-5 h-5 ${outputType === "qr" ? "text-purple-600" : "text-gray-600"}`} />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-gray-900">QR Code</h3>
+                          <p className="text-sm text-gray-500">Generate a QR code for the URL</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                        outputType === "both" ? "border-green-500 bg-green-50" : "border-gray-200 hover:border-gray-300"
+                      }`}
+                      onClick={() => setOutputType("both")}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                          outputType === "both" ? "bg-green-100" : "bg-gray-100"
+                        }`}>
+                          <div className="flex space-x-1">
+                            <LinkIcon className={`w-4 h-4 ${outputType === "both" ? "text-green-600" : "text-gray-600"}`} />
+                            <QrCode className={`w-4 h-4 ${outputType === "both" ? "text-green-600" : "text-gray-600"}`} />
+                          </div>
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-gray-900">Both</h3>
+                          <p className="text-sm text-gray-500">Generate both short URL and QR code</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <Label htmlFor="custom-alias" className="text-sm font-medium">
