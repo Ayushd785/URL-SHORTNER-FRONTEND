@@ -6,19 +6,21 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Link as LinkIcon, 
-  Copy, 
-  BarChart3, 
-  Settings, 
-  LogOut, 
+import {
+  Link as LinkIcon,
+  Copy,
+  BarChart3,
+  Settings,
+  LogOut,
   Plus,
   Eye,
   EyeOff,
   Lock,
   Calendar,
   ExternalLink,
-  TrendingUp
+  TrendingUp,
+  QrCode,
+  Download
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
