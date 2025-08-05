@@ -277,6 +277,215 @@ export default function Index() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section id="about" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              About LinklyPro
+            </h2>
+            <p className="text-xl text-gray-600 leading-relaxed">
+              Born from the need for a powerful yet simple URL management solution, LinklyPro combines
+              cutting-edge technology with intuitive design to deliver the ultimate link shortening experience.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Target className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
+              <p className="text-gray-600">
+                To simplify digital communication by making every link shorter, smarter, and more secure.
+                We believe powerful tools should be accessible to everyone.
+              </p>
+            </div>
+
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Lightbulb className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Innovation</h3>
+              <p className="text-gray-600">
+                We continuously push the boundaries of what's possible with URL shortening, adding QR codes,
+                advanced analytics, and smart features you won't find elsewhere.
+              </p>
+            </div>
+
+            <div className="text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Users className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Community</h3>
+              <p className="text-gray-600">
+                Built for creators, marketers, and businesses worldwide. We're trusted by over 10 million users
+                who rely on us for their most important campaigns.
+              </p>
+            </div>
+          </div>
+
+          {/* Stats Section */}
+          <div className="bg-white rounded-2xl shadow-xl p-12">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                  10M+
+                </div>
+                <div className="text-gray-600 font-medium">Active Users</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                  500M+
+                </div>
+                <div className="text-gray-600 font-medium">Links Created</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                  99.9%
+                </div>
+                <div className="text-gray-600 font-medium">Uptime</div>
+              </div>
+              <div>
+                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                  150+
+                </div>
+                <div className="text-gray-600 font-medium">Countries</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the Developer Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Meet the Developer
+              </h2>
+              <p className="text-xl text-gray-600">
+                The passionate mind behind LinklyPro
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                {/* Profile Picture Placeholder */}
+                <div className="flex-shrink-0">
+                  <div className="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-4xl md:text-5xl font-bold shadow-2xl">
+                    A
+                  </div>
+                  <div className="text-center mt-4">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="text-xs"
+                      onClick={() => {
+                        const input = document.createElement('input');
+                        input.type = 'file';
+                        input.accept = 'image/*';
+                        input.onchange = (e) => {
+                          const file = (e.target as HTMLInputElement).files?.[0];
+                          if (file) {
+                            const reader = new FileReader();
+                            reader.onload = (event) => {
+                              const img = document.querySelector('.developer-avatar') as HTMLElement;
+                              if (img && event.target?.result) {
+                                img.style.backgroundImage = `url(${event.target.result})`;
+                                img.style.backgroundSize = 'cover';
+                                img.style.backgroundPosition = 'center';
+                                img.innerHTML = '';
+                              }
+                            };
+                            reader.readAsDataURL(file);
+                          }
+                        };
+                        input.click();
+                      }}
+                    >
+                      Add Photo
+                    </Button>
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
+                    Hi, I'm Ayush! 👋
+                  </h3>
+                  <div className="text-lg text-gray-600 mb-6 leading-relaxed">
+                    <p className="mb-4">
+                      I'm a passionate full-stack developer with a love for creating tools that make life easier.
+                      LinklyPro started as a personal project when I needed a reliable URL shortener for my own projects.
+                    </p>
+                    <p className="mb-4">
+                      <em className="text-gray-500 text-base">
+                        "I believe great software should be powerful yet simple, beautiful yet functional.
+                        Every feature in LinklyPro is designed with real users in mind."
+                      </em>
+                    </p>
+                    <p>
+                      When I'm not coding, you'll find me exploring new technologies, contributing to open source,
+                      or sharing my knowledge with the developer community.
+                    </p>
+                  </div>
+
+                  {/* Social Links */}
+                  <div className="flex justify-center md:justify-start space-x-4">
+                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                      <Github className="w-4 h-4" />
+                      <span>GitHub</span>
+                    </Button>
+                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                      <Linkedin className="w-4 h-4" />
+                      <span>LinkedIn</span>
+                    </Button>
+                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                      <Twitter className="w-4 h-4" />
+                      <span>Twitter</span>
+                    </Button>
+                    <Button variant="outline" size="sm" className="flex items-center space-x-2">
+                      <Mail className="w-4 h-4" />
+                      <span>Contact</span>
+                    </Button>
+                  </div>
+
+                  {/* Tech Stack */}
+                  <div className="mt-8">
+                    <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                      Built with love using
+                    </h4>
+                    <div className="flex flex-wrap justify-center md:justify-start gap-2">
+                      {['React', 'TypeScript', 'Node.js', 'TailwindCSS', 'Vite', 'Express'].map((tech) => (
+                        <Badge key={tech} variant="secondary" className="bg-white/50">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Quote Section */}
+              <div className="mt-12 p-6 bg-white/80 rounded-2xl border border-white/20 backdrop-blur-sm">
+                <div className="flex items-start space-x-4">
+                  <Heart className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="text-gray-700 italic">
+                      "Building LinklyPro has been an incredible journey. Seeing millions of users create and share
+                      their content more effectively drives me to keep innovating and improving the platform every day."
+                    </p>
+                    <p className="text-sm text-gray-500 mt-2 font-medium">— Ayush, Founder & Developer</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
         <div className="container mx-auto px-4 text-center">
