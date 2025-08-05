@@ -132,16 +132,32 @@ export default function Index() {
               </div>
               
               {shortUrl && (
-                <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center justify-between">
-                  <span className="text-green-800 font-medium">{shortUrl}</span>
+                <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-between">
+                  <span className="text-blue-800 font-medium">{shortUrl}</span>
                   <Button
                     size="sm"
                     variant="outline"
-                    onClick={copyToClipboard}
+                    onClick={() => copyToClipboard(shortUrl)}
                     className="ml-2"
                   >
                     <Copy className="w-4 h-4" />
                   </Button>
+                </div>
+              )}
+
+              {qrCode && (
+                <div className="mt-4 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+                  <div className="flex flex-col items-center space-y-3">
+                    <span className="text-purple-800 font-medium text-sm">Your QR Code is ready!</span>
+                    <img
+                      src={qrCode}
+                      alt="Generated QR Code"
+                      className="w-32 h-32 border border-gray-200 rounded-lg"
+                    />
+                    <p className="text-xs text-purple-600 text-center">
+                      Scan with your phone to visit the URL
+                    </p>
+                  </div>
                 </div>
               )}
             </CardContent>
