@@ -57,7 +57,21 @@ export default function Links() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("created");
   const [filterBy, setFilterBy] = useState("all");
+
+  // User data (in real app, this would come from context/state management)
+  const [userData] = useState({
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    avatar: "👨‍💻",
+    plan: "Pro Plan"
+  });
+
   const navigate = useNavigate();
+
+  const getInitials = (firstName: string, lastName: string) => {
+    return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  };
 
   // Mock data for demonstration
   const [links] = useState<LinkData[]>([
