@@ -28,7 +28,39 @@ export default function Index() {
   const [shortUrl, setShortUrl] = useState("");
   const [outputType, setOutputType] = useState<"url" | "qr">("url");
   const [qrCode, setQrCode] = useState("");
+  const [isVisible, setIsVisible] = useState({
+    hero: false,
+    features: false,
+    about: false,
+    developer: false,
+    stats: false
+  });
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const section = entry.target.id;
+            setIsVisible(prev => ({ ...prev, [section]: true }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const sections = ['hero', 'features', 'about', 'developer', 'stats'];
+    sections.forEach(section => {
+      const element = document.getElementById(section);
+      if (element) observer.observe(element);
+    });
+
+    // Hero is visible immediately
+    setIsVisible(prev => ({ ...prev, hero: true }));
+
+    return () => observer.disconnect();
+  }, []);
 
   const generateQRCode = (text: string) => {
     const size = 200;
@@ -104,7 +136,7 @@ export default function Index() {
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <Badge variant="secondary" className="mb-4">
-            🚀 Trusted by 10M+ users worldwide
+            ��� Trusted by 10M+ users worldwide
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Shorten URLs &
