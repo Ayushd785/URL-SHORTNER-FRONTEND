@@ -478,25 +478,25 @@ export default function Index() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                  10M+
+                  {activeUsers}M+
                 </div>
                 <div className="text-gray-600 font-medium">Active Users</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                  500M+
+                  {linksCreated}M+
                 </div>
                 <div className="text-gray-600 font-medium">Links Created</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                  99.9%
+                  {uptime}%
                 </div>
                 <div className="text-gray-600 font-medium">Uptime</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-                  150+
+                  {countries}+
                 </div>
                 <div className="text-gray-600 font-medium">Countries</div>
               </div>
