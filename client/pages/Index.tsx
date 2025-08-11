@@ -133,7 +133,7 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-20 text-center">
+      <section id="hero" className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <Badge variant="secondary" className="mb-4">
             ��� Trusted by 10M+ users worldwide
