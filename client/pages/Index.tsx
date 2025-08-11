@@ -281,8 +281,9 @@ export default function Index() {
                 <Input
                   placeholder="Paste your long URL here..."
                   value={url}
-                  onChange={(e) => setUrl(e.target.value)}
-                  className="flex-1 h-12 text-lg border-gray-200 focus:border-blue-500"
+                  onChange={(e) => handleUrlChange(e.target.value)}
+                  onFocus={handleWidgetFocus}
+                  className="flex-1 h-12 text-lg border-gray-200 focus:border-blue-500 transition-all duration-300"
                 />
                 <Button
                   onClick={handleShorten}
@@ -669,7 +670,7 @@ export default function Index() {
                       platform every day."
                     </p>
                     <p className="text-sm text-gray-500 mt-2 font-medium">
-                      ��� Ayush, Founder & Developer
+                      — Ayush, Founder & Developer
                     </p>
                   </div>
                 </div>
