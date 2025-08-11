@@ -244,15 +244,15 @@ export default function Links() {
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" onClick={() => navigate("/dashboard")}>
+            <Button variant="ghost" onClick={() => navigate("/dashboard")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
               <BarChart3 className="w-4 h-4 mr-2" />
               Dashboard
             </Button>
-            <Button variant="ghost" className="text-blue-600">
+            <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/settings")}>
+            <Button variant="ghost" onClick={() => navigate("/settings")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
               <Settings className="w-4 h-4 mr-2" />
               Settings
             </Button>
