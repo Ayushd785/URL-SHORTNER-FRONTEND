@@ -138,7 +138,7 @@ export default function Index() {
           <Badge variant="secondary" className="mb-4 animate-slide-up-delay-1">
             ��� Trusted by 10M+ users worldwide
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up-delay-2">
             Shorten URLs &
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               {" "}
