@@ -473,7 +473,7 @@ export default function Index() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12">
+            <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12 scroll-reveal">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 {/* Profile Picture Placeholder */}
                 <div className="flex-shrink-0">
