@@ -74,6 +74,12 @@ export default function Index() {
     developer: false,
     stats: false
   });
+
+  // Animated counters for stats section
+  const activeUsers = useAnimatedCounter(10, 2000, isVisible.stats);
+  const linksCreated = useAnimatedCounter(500, 2500, isVisible.stats);
+  const uptime = useAnimatedCounter(99.9, 2000, isVisible.stats);
+  const countries = useAnimatedCounter(150, 1800, isVisible.stats);
   const navigate = useNavigate();
 
   useEffect(() => {
