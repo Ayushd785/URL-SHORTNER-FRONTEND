@@ -152,7 +152,7 @@ export default function Index() {
           </p>
 
           {/* URL Shortener Widget */}
-          <Card className="max-w-2xl mx-auto mb-12 shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+          <Card className="max-w-2xl mx-auto mb-12 shadow-xl border-0 bg-white/80 backdrop-blur-sm animate-float scroll-reveal">
             <CardContent className="p-6">
               {/* Toggle between URL and QR */}
               <div className="flex justify-center mb-4">
