@@ -20,8 +20,47 @@ import {
   Mail,
   Coffee,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
+// Custom hook for animated counters
+const useAnimatedCounter = (end: number, duration: number = 2000, startAnimation: boolean = false) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(0);
+  const startTimeRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    if (!startAnimation) return;
+
+    const animateCount = (timestamp: number) => {
+      if (!startTimeRef.current) {
+        startTimeRef.current = timestamp;
+      }
+
+      const progress = Math.min((timestamp - startTimeRef.current) / duration, 1);
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4); // Smooth easing
+      const currentCount = Math.floor(easeOutQuart * end);
+
+      countRef.current = currentCount;
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(animateCount);
+      } else {
+        setCount(end); // Ensure we end exactly at the target
+      }
+    };
+
+    // Reset for new animation
+    setCount(0);
+    countRef.current = 0;
+    startTimeRef.current = null;
+
+    requestAnimationFrame(animateCount);
+  }, [end, duration, startAnimation]);
+
+  return count;
+};
 
 export default function Index() {
   const [url, setUrl] = useState("");
