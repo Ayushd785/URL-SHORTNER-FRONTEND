@@ -593,7 +593,7 @@ export default function Index() {
                   <div className="mt-6 flex justify-center md:justify-start">
                     <Button
                       className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out flex items-center space-x-2"
-                      onClick={() => window.open('https://buymeacoffee.com/ayush', '_blank')}
+                      onClick={() => window.open('https://buymeacoffee.com/ayushd785', '_blank')}
                     >
                       <Coffee className="w-4 h-4" />
                       <span className="font-medium">Buy me a coffee</span>
