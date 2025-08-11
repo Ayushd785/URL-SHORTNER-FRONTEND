@@ -157,7 +157,7 @@ export default function Index() {
       <section id="hero" className="container mx-auto px-4 py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <Badge variant="secondary" className="mb-4 animate-slide-up-delay-1">
-            ��� Trusted by 10M+ users worldwide
+            Not your regular Url Shortner
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up-delay-2">
             Shorten URLs &
