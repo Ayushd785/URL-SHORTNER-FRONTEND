@@ -38,7 +38,20 @@ export default function Index() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    // Scroll reveal animation observer
+    const scrollObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    // Section visibility observer
+    const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -50,16 +63,24 @@ export default function Index() {
       { threshold: 0.1 }
     );
 
+    // Observe scroll reveal elements
+    const scrollElements = document.querySelectorAll('.scroll-reveal');
+    scrollElements.forEach(el => scrollObserver.observe(el));
+
+    // Observe sections
     const sections = ['hero', 'features', 'about', 'developer', 'stats'];
     sections.forEach(section => {
       const element = document.getElementById(section);
-      if (element) observer.observe(element);
+      if (element) sectionObserver.observe(element);
     });
 
     // Hero is visible immediately
     setIsVisible(prev => ({ ...prev, hero: true }));
 
-    return () => observer.disconnect();
+    return () => {
+      scrollObserver.disconnect();
+      sectionObserver.disconnect();
+    };
   }, []);
 
   const generateQRCode = (text: string) => {
