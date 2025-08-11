@@ -242,7 +242,9 @@ export default function Index() {
 
           {/* URL Shortener Widget */}
           <Card className={`max-w-2xl mx-auto mb-12 shadow-xl border-0 bg-white/80 backdrop-blur-sm scroll-reveal transition-all duration-500 ${
-            !isWidgetActive ? 'animate-float' : 'hover:shadow-2xl'
+            !isWidgetActive
+              ? 'animate-float'
+              : 'ring-2 ring-blue-200 shadow-2xl bg-white/95'
           }`}>
             <CardContent
               className="p-6"
