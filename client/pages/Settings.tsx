@@ -163,15 +163,15 @@ export default function Settings() {
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" onClick={() => navigate("/dashboard")}>
+            <Button variant="ghost" onClick={() => navigate("/dashboard")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
               <BarChart3 className="w-4 h-4 mr-2" />
               Dashboard
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/links")}>
+            <Button variant="ghost" onClick={() => navigate("/links")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
             </Button>
-            <Button variant="ghost" className="text-blue-600">
+            <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
               <SettingsIcon className="w-4 h-4 mr-2" />
               Settings
             </Button>
