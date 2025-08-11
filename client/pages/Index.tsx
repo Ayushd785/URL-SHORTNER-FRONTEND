@@ -153,28 +153,6 @@ export default function Index() {
     navigator.clipboard.writeText(text);
   };
 
-  const handleWidgetFocus = () => {
-    setIsWidgetActive(true);
-  };
-
-  const handleWidgetBlur = () => {
-    // Only deactivate if there's no content and user has left the widget area
-    setTimeout(() => {
-      if (!url) {
-        setIsWidgetActive(false);
-      }
-    }, 200); // Small delay to prevent flicker when switching between elements
-  };
-
-  const handleUrlChange = (value: string) => {
-    setUrl(value);
-    if (value.length > 0) {
-      setIsWidgetActive(true);
-    } else {
-      setIsWidgetActive(false);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Header */}
