@@ -252,9 +252,8 @@ export default function Index() {
                 <Input
                   placeholder="Paste your long URL here..."
                   value={url}
-                  onChange={(e) => handleUrlChange(e.target.value)}
-                  onFocus={handleWidgetFocus}
-                  className="flex-1 h-12 text-lg border-gray-200 focus:border-blue-500 transition-all duration-300"
+                  onChange={(e) => setUrl(e.target.value)}
+                  className="flex-1 h-12 text-lg border-gray-200 focus:border-blue-500"
                 />
                 <Button
                   onClick={handleShorten}
