@@ -282,7 +282,7 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg transition-shadow">
+            <Card className="p-6 hover:shadow-lg transition-shadow scroll-reveal stagger-3">
               <CardContent className="p-0">
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
                   <QrCode className="w-6 h-6 text-green-600" />
@@ -297,7 +297,7 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <Card className="p-6 hover:shadow-lg transition-shadow">
+            <Card className="p-6 hover:shadow-lg transition-shadow scroll-reveal stagger-4">
               <CardContent className="p-0">
                 <div className="w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center mb-4">
                   <Zap className="w-6 h-6 text-teal-600" />
