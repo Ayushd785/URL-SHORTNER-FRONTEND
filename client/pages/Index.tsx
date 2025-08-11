@@ -628,7 +628,7 @@ export default function Index() {
               size="lg"
               variant="outline"
               onClick={() => navigate("/dashboard")}
-              className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600"
+              className="text-lg px-8 py-3 text-white border-2 border-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-blue-600 transition-all duration-300"
             >
               View Dashboard
             </Button>
