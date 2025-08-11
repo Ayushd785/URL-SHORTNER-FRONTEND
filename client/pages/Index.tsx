@@ -67,7 +67,6 @@ export default function Index() {
   const [shortUrl, setShortUrl] = useState("");
   const [outputType, setOutputType] = useState<"url" | "qr">("url");
   const [qrCode, setQrCode] = useState("");
-  const [isWidgetActive, setIsWidgetActive] = useState(false);
   const [isVisible, setIsVisible] = useState({
     hero: false,
     features: false,
