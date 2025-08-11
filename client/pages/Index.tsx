@@ -244,7 +244,11 @@ export default function Index() {
           <Card className={`max-w-2xl mx-auto mb-12 shadow-xl border-0 bg-white/80 backdrop-blur-sm scroll-reveal transition-all duration-500 ${
             !isWidgetActive ? 'animate-float' : 'hover:shadow-2xl'
           }`}>
-            <CardContent className="p-6">
+            <CardContent
+              className="p-6"
+              onFocus={handleWidgetFocus}
+              onBlur={handleWidgetBlur}
+            >
               {/* Toggle between URL and QR */}
               <div className="flex justify-center mb-4">
                 <div className="flex bg-gray-100 rounded-lg p-1">
@@ -665,7 +669,7 @@ export default function Index() {
                       platform every day."
                     </p>
                     <p className="text-sm text-gray-500 mt-2 font-medium">
-                      — Ayush, Founder & Developer
+                      ��� Ayush, Founder & Developer
                     </p>
                   </div>
                 </div>
