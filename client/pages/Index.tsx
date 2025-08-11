@@ -218,16 +218,8 @@ export default function Index() {
           </p>
 
           {/* URL Shortener Widget */}
-          <Card className={`max-w-2xl mx-auto mb-12 shadow-xl border-0 bg-white/80 backdrop-blur-sm scroll-reveal transition-all duration-500 ${
-            !isWidgetActive
-              ? 'animate-float'
-              : 'ring-2 ring-blue-200 shadow-2xl bg-white/95'
-          }`}>
-            <CardContent
-              className="p-6"
-              onFocus={handleWidgetFocus}
-              onBlur={handleWidgetBlur}
-            >
+          <Card className="max-w-2xl mx-auto mb-12 shadow-xl border-0 bg-white/80 backdrop-blur-sm">
+            <CardContent className="p-6">
               {/* Toggle between URL and QR */}
               <div className="flex justify-center mb-4">
                 <div className="flex bg-gray-100 rounded-lg p-1">
