@@ -21,6 +21,7 @@ import {
   Headphones,
   Crown,
   Infinity,
+  Mail,
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -177,7 +178,7 @@ export default function Pricing() {
         quarterly: 499,
         annually: 1499,
       },
-      buttonText: "Contact Sales",
+      buttonText: "Email Us",
       buttonVariant: "outline",
     },
   ];
@@ -706,8 +707,10 @@ export default function Pricing() {
                 size="lg"
                 variant="outline"
                 className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600"
+                onClick={() => window.open('mailto:ayushd785@gmail.com?subject=Enterprise Plan Inquiry&body=Hi, I am interested in the Enterprise plan. Please provide more details.', '_blank')}
               >
-                Contact Sales
+                <Mail className="w-5 h-5 mr-2" />
+                Email Us
               </Button>
             </div>
           </div>
