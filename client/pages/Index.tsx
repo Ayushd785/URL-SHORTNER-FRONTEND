@@ -21,6 +21,8 @@ import {
   Coffee,
   Download,
   Share2,
+  Menu,
+  X,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
@@ -83,6 +85,7 @@ export default function Index() {
     developer: false,
     stats: false,
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Animated counters for stats section
   const activeUsers = useAnimatedCounter(10, 2000, isVisible.stats);
@@ -212,6 +215,8 @@ export default function Index() {
               LinklyPro
             </span>
           </div>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <a
               href="#features"
@@ -232,29 +237,101 @@ export default function Index() {
               About
             </a>
           </div>
-          <div className="flex items-center space-x-3">
+
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex items-center space-x-3">
             <Button variant="ghost" onClick={() => navigate("/login")}>
               Sign In
             </Button>
             <Button onClick={() => navigate("/signup")}>Get Started</Button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </Button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t bg-white/95 backdrop-blur-sm">
+            <div className="container mx-auto px-4 py-4 space-y-4">
+              <a
+                href="#features"
+                className="block text-gray-600 hover:text-gray-900 transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Features
+              </a>
+              <button
+                onClick={() => {
+                  navigate("/pricing");
+                  setMobileMenuOpen(false);
+                }}
+                className="block text-gray-600 hover:text-gray-900 transition-colors py-2 text-left w-full"
+              >
+                Pricing
+              </button>
+              <a
+                href="#about"
+                className="block text-gray-600 hover:text-gray-900 transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <div className="flex flex-col space-y-3 pt-4 border-t">
+                <Button
+                  variant="ghost"
+                  onClick={() => {
+                    navigate("/login");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full"
+                >
+                  Sign In
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/signup");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full"
+                >
+                  Get Started
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="container mx-auto px-4 py-20 text-center">
+      <section
+        id="hero"
+        className="container mx-auto px-4 py-12 md:py-20 text-center"
+      >
         <div className="max-w-4xl mx-auto">
           <Badge variant="secondary" className="mb-4 animate-slide-up-delay-1">
             Not your regular Url Shortner
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up-delay-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up-delay-2">
             Shorten URLs &
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-pulse-slow">
               {" "}
               Generate QR Codes
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-slide-up-delay-3">
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-slide-up-delay-3 px-4">
             Create branded short links, generate QR codes, track clicks in
             real-time, and protect your URLs with passwords. The most powerful
             URL shortener and QR code generator for businesses and creators.
@@ -291,33 +368,43 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Input
                   placeholder="Paste your long URL here..."
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  className="flex-1 h-12 text-lg border-gray-200 focus:border-blue-500"
+                  className="flex-1 h-12 text-base md:text-lg border-gray-200 focus:border-blue-500"
                 />
                 <Button
                   onClick={handleShorten}
-                  className="h-12 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  className="h-12 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base"
                   disabled={!url}
                 >
-                  {outputType === "url" ? "Shorten URL" : "Generate QR"}
+                  <span className="hidden sm:inline">
+                    {outputType === "url" ? "Shorten URL" : "Generate QR"}
+                  </span>
+                  <span className="sm:hidden">
+                    {outputType === "url" ? "Shorten" : "Generate"}
+                  </span>
                 </Button>
               </div>
 
               {shortUrl && (
-                <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-between">
-                  <span className="text-blue-800 font-medium">{shortUrl}</span>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => copyToClipboard(shortUrl)}
-                    className="ml-2"
-                  >
-                    <Copy className="w-4 h-4" />
-                  </Button>
+                <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <span className="text-blue-800 font-medium text-sm sm:text-base break-all">
+                      {shortUrl}
+                    </span>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => copyToClipboard(shortUrl)}
+                      className="self-end sm:self-auto"
+                    >
+                      <Copy className="w-4 h-4" />
+                      <span className="ml-1 hidden sm:inline">Copy</span>
+                    </Button>
+                  </div>
                 </div>
               )}
 
@@ -330,17 +417,17 @@ export default function Index() {
                     <img
                       src={qrCode}
                       alt="Generated QR Code"
-                      className="w-32 h-32 border border-gray-200 rounded-lg"
+                      className="w-24 h-24 sm:w-32 sm:h-32 border border-gray-200 rounded-lg"
                     />
-                    <p className="text-xs text-purple-600 text-center mb-3">
+                    <p className="text-xs text-purple-600 text-center mb-3 px-2">
                       Scan with your phone to visit the URL
                     </p>
-                    <div className="flex space-x-2">
+                    <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={downloadQRCode}
-                        className="flex items-center space-x-1"
+                        className="flex items-center justify-center space-x-2 w-full sm:w-auto"
                       >
                         <Download className="w-4 h-4" />
                         <span>Download</span>
@@ -349,7 +436,7 @@ export default function Index() {
                         size="sm"
                         variant="outline"
                         onClick={shareQRCode}
-                        className="flex items-center space-x-1"
+                        className="flex items-center justify-center space-x-2 w-full sm:w-auto"
                       >
                         <Share2 className="w-4 h-4" />
                         <span>Share</span>
@@ -537,34 +624,39 @@ export default function Index() {
           </div>
 
           {/* Stats Section */}
-          <div
-            id="stats"
-            className="bg-white rounded-2xl shadow-xl p-12 scroll-reveal"
-          >
+          <div id="stats" className="bg-white rounded-2xl shadow-xl p-12 scroll-reveal">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {activeUsers}M+
                 </div>
-                <div className="text-gray-600 font-medium">Active Users</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Active Users
+                </div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {linksCreated}M+
                 </div>
-                <div className="text-gray-600 font-medium">Links Created</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Links Created
+                </div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {uptime}%
                 </div>
-                <div className="text-gray-600 font-medium">Uptime</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Uptime
+                </div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {countries}+
                 </div>
-                <div className="text-gray-600 font-medium">Countries</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Countries
+                </div>
               </div>
             </div>
           </div>
