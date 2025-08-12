@@ -305,19 +305,19 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="container mx-auto px-4 py-20 text-center">
+      <section id="hero" className="container mx-auto px-4 py-12 md:py-20 text-center">
         <div className="max-w-4xl mx-auto">
           <Badge variant="secondary" className="mb-4 animate-slide-up-delay-1">
             Not your regular Url Shortner
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up-delay-2">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight animate-slide-up-delay-2">
             Shorten URLs &
             <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent animate-pulse-slow">
               {" "}
               Generate QR Codes
             </span>
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-slide-up-delay-3">
+          <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto animate-slide-up-delay-3 px-4">
             Create branded short links, generate QR codes, track clicks in
             real-time, and protect your URLs with passwords. The most powerful
             URL shortener and QR code generator for businesses and creators.
