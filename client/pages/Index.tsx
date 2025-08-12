@@ -354,19 +354,24 @@ export default function Index() {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Input
                   placeholder="Paste your long URL here..."
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
-                  className="flex-1 h-12 text-lg border-gray-200 focus:border-blue-500"
+                  className="flex-1 h-12 text-base md:text-lg border-gray-200 focus:border-blue-500"
                 />
                 <Button
                   onClick={handleShorten}
-                  className="h-12 px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                  className="h-12 px-4 sm:px-8 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-sm sm:text-base"
                   disabled={!url}
                 >
-                  {outputType === "url" ? "Shorten URL" : "Generate QR"}
+                  <span className="hidden sm:inline">
+                    {outputType === "url" ? "Shorten URL" : "Generate QR"}
+                  </span>
+                  <span className="sm:hidden">
+                    {outputType === "url" ? "Shorten" : "Generate"}
+                  </span>
                 </Button>
               </div>
 
