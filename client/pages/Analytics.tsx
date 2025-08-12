@@ -98,6 +98,8 @@ const analyticsData = {
 
 export default function Analytics() {
   const [timeRange, setTimeRange] = useState("7d");
+  const [hoveredSegment, setHoveredSegment] = useState<string | null>(null);
+  const [tooltipData, setTooltipData] = useState<{device: string, count: number, percentage: string} | null>(null);
   const [userData] = useState({
     firstName: "John",
     lastName: "Doe",
@@ -105,7 +107,7 @@ export default function Analytics() {
     avatar: "👨‍💻",
     plan: "Pro Plan"
   });
-  
+
   const navigate = useNavigate();
 
   const getInitials = (firstName: string, lastName: string) => {
