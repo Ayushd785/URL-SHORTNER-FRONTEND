@@ -208,6 +208,8 @@ export default function Index() {
               LinklyPro
             </span>
           </div>
+
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <a
               href="#features"
@@ -228,13 +230,78 @@ export default function Index() {
               About
             </a>
           </div>
-          <div className="flex items-center space-x-3">
+
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex items-center space-x-3">
             <Button variant="ghost" onClick={() => navigate("/login")}>
               Sign In
             </Button>
             <Button onClick={() => navigate("/signup")}>Get Started</Button>
           </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </Button>
+          </div>
         </div>
+
+        {/* Mobile Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t bg-white/95 backdrop-blur-sm">
+            <div className="container mx-auto px-4 py-4 space-y-4">
+              <a
+                href="#features"
+                className="block text-gray-600 hover:text-gray-900 transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Features
+              </a>
+              <button
+                onClick={() => {
+                  navigate("/pricing");
+                  setMobileMenuOpen(false);
+                }}
+                className="block text-gray-600 hover:text-gray-900 transition-colors py-2 text-left w-full"
+              >
+                Pricing
+              </button>
+              <a
+                href="#about"
+                className="block text-gray-600 hover:text-gray-900 transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                About
+              </a>
+              <div className="flex flex-col space-y-3 pt-4 border-t">
+                <Button
+                  variant="ghost"
+                  onClick={() => {
+                    navigate("/login");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full"
+                >
+                  Sign In
+                </Button>
+                <Button
+                  onClick={() => {
+                    navigate("/signup");
+                    setMobileMenuOpen(false);
+                  }}
+                  className="w-full"
+                >
+                  Get Started
+                </Button>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* Hero Section */}
