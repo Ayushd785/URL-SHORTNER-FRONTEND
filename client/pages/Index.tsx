@@ -19,6 +19,8 @@ import {
   Twitter,
   Mail,
   Coffee,
+  Download,
+  Share2,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
