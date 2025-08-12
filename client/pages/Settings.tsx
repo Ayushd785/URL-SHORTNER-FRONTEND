@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
@@ -37,6 +38,7 @@ import {
   Download,
   Globe,
   Shield,
+  Mail,
 } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -187,26 +189,50 @@ export default function Settings() {
               </p>
               <p className="text-xs text-gray-500">{userProfile.plan}</p>
             </div>
-            <Avatar className="w-8 h-8">
-              {userProfile.avatar && userProfile.avatar.startsWith("data:") ? (
-                <AvatarImage src={userProfile.avatar} />
-              ) : userProfile.avatar ? (
-                <div className="w-full h-full flex items-center justify-center text-lg">
-                  {userProfile.avatar}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="w-8 h-8 cursor-pointer hover:ring-2 hover:ring-blue-200 transition-all">
+                  {userProfile.avatar && userProfile.avatar.startsWith("data:") ? (
+                    <AvatarImage src={userProfile.avatar} />
+                  ) : userProfile.avatar ? (
+                    <div className="w-full h-full flex items-center justify-center text-lg">
+                      {userProfile.avatar}
+                    </div>
+                  ) : (
+                    <AvatarFallback>
+                      {getInitials(userProfile.firstName, userProfile.lastName)}
+                    </AvatarFallback>
+                  )}
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <div className="px-3 py-2">
+                  <div className="flex items-center space-x-2">
+                    <User className="w-4 h-4 text-gray-500" />
+                    <div>
+                      <p className="text-sm font-medium">{userProfile.firstName} {userProfile.lastName}</p>
+                      <p className="text-xs text-gray-500">{userProfile.plan}</p>
+                    </div>
+                  </div>
                 </div>
-              ) : (
-                <AvatarFallback>
-                  {getInitials(userProfile.firstName, userProfile.lastName)}
-                </AvatarFallback>
-              )}
-            </Avatar>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => navigate("/login")}
-            >
-              <LogOut className="w-4 h-4" />
-            </Button>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4" />
+                  <div>
+                    <p className="text-sm">{userProfile.email}</p>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="flex items-center space-x-2 text-blue-600">
+                  <SettingsIcon className="w-4 h-4" />
+                  <span>Account Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate('/login')} className="flex items-center space-x-2 text-red-600">
+                  <LogOut className="w-4 h-4" />
+                  <span>Sign Out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>
