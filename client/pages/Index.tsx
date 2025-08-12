@@ -401,17 +401,17 @@ export default function Index() {
                     <img
                       src={qrCode}
                       alt="Generated QR Code"
-                      className="w-32 h-32 border border-gray-200 rounded-lg"
+                      className="w-24 h-24 sm:w-32 sm:h-32 border border-gray-200 rounded-lg"
                     />
-                    <p className="text-xs text-purple-600 text-center mb-3">
+                    <p className="text-xs text-purple-600 text-center mb-3 px-2">
                       Scan with your phone to visit the URL
                     </p>
-                    <div className="flex space-x-2">
+                    <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={downloadQRCode}
-                        className="flex items-center space-x-1"
+                        className="flex items-center justify-center space-x-2 w-full sm:w-auto"
                       >
                         <Download className="w-4 h-4" />
                         <span>Download</span>
@@ -420,7 +420,7 @@ export default function Index() {
                         size="sm"
                         variant="outline"
                         onClick={shareQRCode}
-                        className="flex items-center space-x-1"
+                        className="flex items-center justify-center space-x-2 w-full sm:w-auto"
                       >
                         <Share2 className="w-4 h-4" />
                         <span>Share</span>
