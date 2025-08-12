@@ -51,6 +51,8 @@ import {
   Smartphone,
   Monitor,
   QrCode,
+  User,
+  Mail,
 } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { useState } from "react";
