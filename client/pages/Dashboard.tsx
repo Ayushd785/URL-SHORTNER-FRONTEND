@@ -196,13 +196,13 @@ export default function Dashboard() {
               <BarChart3 className="w-4 h-4 mr-2" />
               Dashboard
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/analytics")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
-              <BarChart3 className="w-4 h-4 mr-2" />
-              Analytics
-            </Button>
             <Button variant="ghost" onClick={() => navigate("/links")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
+            </Button>
+            <Button variant="ghost" onClick={() => navigate("/analytics")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
+              <BarChart3 className="w-4 h-4 mr-2" />
+              Analytics
             </Button>
             <Button variant="ghost" onClick={() => navigate("/settings")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
               <Settings className="w-4 h-4 mr-2" />
