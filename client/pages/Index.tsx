@@ -639,7 +639,7 @@ export default function Index() {
                   </div>
 
                   {/* Buy me a coffee */}
-                  <div className="mt-6 flex justify-center md:justify-start">
+                  <div className="mt-6 flex justify-center">
                     <Button
                       className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out flex items-center space-x-2"
                       onClick={() => window.open('https://buymeacoffee.com/ayushd785', '_blank')}
