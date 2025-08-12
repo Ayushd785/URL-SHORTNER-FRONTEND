@@ -613,7 +613,7 @@ export default function Settings() {
                       </Label>
                       <div className="flex items-center space-x-2 mt-1">
                         <Badge variant="default">{userProfile.plan}</Badge>
-                        <Button variant="link" className="px-0 h-auto text-sm">
+                        <Button variant="link" onClick={() => navigate('/pricing')} className="px-0 h-auto text-sm">
                           Upgrade Plan
                         </Button>
                       </div>
