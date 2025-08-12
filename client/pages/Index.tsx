@@ -376,16 +376,19 @@ export default function Index() {
               </div>
 
               {shortUrl && (
-                <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-between">
-                  <span className="text-blue-800 font-medium">{shortUrl}</span>
-                  <Button
-                    size="sm"
-                    variant="outline"
-                    onClick={() => copyToClipboard(shortUrl)}
-                    className="ml-2"
-                  >
-                    <Copy className="w-4 h-4" />
-                  </Button>
+                <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                    <span className="text-blue-800 font-medium text-sm sm:text-base break-all">{shortUrl}</span>
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => copyToClipboard(shortUrl)}
+                      className="self-end sm:self-auto"
+                    >
+                      <Copy className="w-4 h-4" />
+                      <span className="ml-1 hidden sm:inline">Copy</span>
+                    </Button>
+                  </div>
                 </div>
               )}
 
