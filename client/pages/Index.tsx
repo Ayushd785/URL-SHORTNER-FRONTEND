@@ -155,6 +155,40 @@ export default function Index() {
     navigator.clipboard.writeText(text);
   };
 
+  const downloadQRCode = () => {
+    if (qrCode) {
+      const link = document.createElement('a');
+      link.href = qrCode;
+      link.download = 'qr-code.png';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
+  const shareQRCode = async () => {
+    if (navigator.share && qrCode) {
+      try {
+        // Convert QR code URL to blob for sharing
+        const response = await fetch(qrCode);
+        const blob = await response.blob();
+        const file = new File([blob], 'qr-code.png', { type: 'image/png' });
+
+        await navigator.share({
+          title: 'QR Code - LinklyPro',
+          text: `QR Code for: ${url}`,
+          files: [file]
+        });
+      } catch (error) {
+        // Fallback to copying the original URL
+        copyToClipboard(url);
+      }
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      copyToClipboard(url);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
       {/* Header */}
