@@ -497,11 +497,15 @@ export default function Links() {
                 </TableHeader>
                 <TableBody>
                   {sortedLinks.map((link) => (
+                        {/* Show original URL on mobile */}
+                        <p className="text-xs text-gray-500 mt-1 md:hidden truncate max-w-[200px]">
+                          {link.originalUrl}
+                        </p>
                     <TableRow key={link.id} className="hover:bg-gray-50">
                       <TableCell>
                         <div className="flex items-center space-x-2">
                           <div>
-                            <div className="flex items-center space-x-2">
+                  <TableCell className="hidden md:table-cell">
                               <span className="text-blue-600 font-medium">
                                 {link.shortUrl}
                               </span>
@@ -509,27 +513,32 @@ export default function Links() {
                                 <Lock className="w-3 h-3 text-gray-400" />
                               )}
                               <Button
+                      {link.description && (
+                        <p className="text-xs text-gray-500 mt-1">
+                          {link.description}
+                        </p>
+                      )}
                                 size="sm"
                                 variant="ghost"
                                 onClick={() => copyToClipboard(link.shortUrl)}
                                 className="p-1 h-auto"
                               >
-                                <Copy className="w-3 h-3" />
+                      <span className="text-sm md:text-lg font-semibold">
                               </Button>
                             </div>
-                            {link.description && (
+                      <Badge variant="outline" className="text-xs hidden sm:inline-flex">
                               <p className="text-xs text-gray-500 mt-1">
                                 {link.description}
                               </p>
                             )}
-                          </div>
-                        </div>
-                      </TableCell>
-
-                      <TableCell>
-                        <div className="max-w-xs">
-                          <p
-                            className="text-sm text-gray-900 truncate"
+                      <p className="text-xs text-gray-500 hidden md:block">
+                <TableHead className="hidden md:table-cell text-xs md:text-sm">Original URL</TableHead>
+                <TableHead className="text-xs md:text-sm">Clicks</TableHead>
+                <TableHead className="hidden lg:table-cell text-xs md:text-sm">Device Split</TableHead>
+                <TableHead className="hidden sm:table-cell text-xs md:text-sm">QR Code</TableHead>
+                <TableHead className="hidden md:table-cell text-xs md:text-sm">Created</TableHead>
+                <TableHead className="text-xs md:text-sm">Status</TableHead>
+                  <TableCell className="hidden lg:table-cell">
                             title={link.originalUrl}
                           >
                             {link.originalUrl}
@@ -539,7 +548,7 @@ export default function Links() {
 
                       <TableCell>
                         <div className="flex items-center space-x-2">
-                          <span className="text-lg font-semibold">
+                          <span className="text-xs md:text-sm text-blue-600 font-medium">
                             {link.clicks.toLocaleString()}
                           </span>
                           <Badge variant="outline" className="text-xs">
@@ -566,8 +575,8 @@ export default function Links() {
                           <div className="flex items-center text-xs text-gray-600">
                             <Smartphone className="w-3 h-3 mr-1" />
                             {Math.round(
-                              (link.device.mobile / link.clicks) * 100,
-                            )}
+                  <TableCell className="hidden sm:table-cell">
+                    <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
                             %
                           </div>
                         </div>
@@ -590,10 +599,10 @@ export default function Links() {
                           </div>
                         </div>
                       </TableCell>
-
+                        className="flex items-center space-x-1 min-h-[44px]"
                       <TableCell>
                         <div className="flex items-center space-x-2">
-                          <Button
+                        <span className="text-xs hidden md:inline">View</span>
                             size="sm"
                             variant="outline"
                             onClick={() => {
@@ -601,14 +610,14 @@ export default function Links() {
                                 "",
                                 "_blank",
                                 "width=400,height=400",
-                              );
+                        className="flex items-center space-x-1 text-xs min-h-[44px] min-w-[44px]"
                               if (qrWindow) {
                                 qrWindow.document.write(`
                                   <html>
                                     <head><title>QR Code - ${link.shortCode}</title></head>
                                     <body style="margin:0;padding:20px;text-align:center;font-family:Arial,sans-serif;">
                                       <h3>QR Code for ${link.shortUrl}</h3>
-                                      <img src="${generateQRCode(link.originalUrl)}" alt="QR Code" style="border:1px solid #ccc;border-radius:8px;" />
+                  <TableCell className="hidden md:table-cell">
                                       <p style="margin-top:20px;font-size:12px;color:#666;">Scan to visit: ${link.originalUrl}</p>
                                     </body>
                                   </html>
@@ -622,17 +631,18 @@ export default function Links() {
                           </Button>
                           <Button
                             size="sm"
+                      className="text-xs"
                             variant="ghost"
                             onClick={() =>
-                              downloadQRCode(link.originalUrl, link.shortCode)
+                            className="p-1 h-auto min-h-[44px] min-w-[44px]"
                             }
                             className="flex items-center space-x-1 text-xs"
                           >
                             <Download className="w-3 h-3" />
                           </Button>
-                        </div>
+                        <Button variant="ghost" size="sm" className="min-h-[44px] min-w-[44px]">
                       </TableCell>
-
+                          <p className="text-xs text-gray-500 mt-1 md:hidden">
                       <TableCell>
                         <div>
                           <p className="text-sm text-gray-900">
@@ -695,17 +705,17 @@ export default function Links() {
               {sortedLinks.length === 0 && (
                 <div className="text-center py-12">
                   <LinkIcon className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    No links found
-                  </h3>
+            <div className="text-center py-8 md:py-12">
+              <LinkIcon className="w-12 h-12 md:w-16 md:h-16 text-gray-300 mx-auto mb-3 md:mb-4" />
+              <h3 className="text-base md:text-lg font-medium text-gray-900 mb-2">
                   <p className="text-gray-500 mb-4">
                     {searchTerm
-                      ? "Try adjusting your search criteria"
+              <p className="text-sm md:text-base text-gray-500 mb-4 px-4">
                       : "Create your first short link to get started"}
                   </p>
                   <Button onClick={() => navigate("/dashboard")}>
                     <LinkIcon className="w-4 h-4 mr-2" />
-                    Create New Link
+              <Button onClick={() => navigate("/dashboard")} className="min-h-[44px]">
                   </Button>
                 </div>
               )}

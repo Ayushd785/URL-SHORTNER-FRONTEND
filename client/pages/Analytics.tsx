@@ -300,15 +300,15 @@ export default function Analytics() {
         </div>
 
         {/* Overview Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-4 md:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs md:text-sm font-medium text-gray-600">
                     Total Clicks
                   </p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-lg md:text-2xl font-bold text-gray-900">
                     {analyticsData.overview.totalClicks.toLocaleString()}
                   </p>
                   <div className="flex items-center mt-1">
@@ -316,19 +316,19 @@ export default function Analytics() {
                     <span className="text-xs text-green-600">+12.5%</span>
                   </div>
                 </div>
-                <MousePointer className="w-8 h-8 text-blue-600" />
+                <MousePointer className="w-6 h-6 md:w-8 md:h-8 text-blue-600" />
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-4 md:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs md:text-sm font-medium text-gray-600">
                     Total Views
                   </p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-lg md:text-2xl font-bold text-gray-900">
                     {analyticsData.overview.totalViews.toLocaleString()}
                   </p>
                   <div className="flex items-center mt-1">
@@ -336,19 +336,19 @@ export default function Analytics() {
                     <span className="text-xs text-green-600">+8.2%</span>
                   </div>
                 </div>
-                <Eye className="w-8 h-8 text-green-600" />
+                <Eye className="w-6 h-6 md:w-8 md:h-8 text-green-600" />
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-4 md:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs md:text-sm font-medium text-gray-600">
                     Conversion Rate
                   </p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-lg md:text-2xl font-bold text-gray-900">
                     {analyticsData.overview.conversionRate}%
                   </p>
                   <div className="flex items-center mt-1">
@@ -356,19 +356,19 @@ export default function Analytics() {
                     <span className="text-xs text-green-600">+2.1%</span>
                   </div>
                 </div>
-                <TrendingUp className="w-8 h-8 text-purple-600" />
+                <TrendingUp className="w-6 h-6 md:w-8 md:h-8 text-purple-600" />
               </div>
             </CardContent>
           </Card>
 
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-4 md:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">
+                  <p className="text-xs md:text-sm font-medium text-gray-600">
                     Avg. Clicks/Link
                   </p>
-                  <p className="text-2xl font-bold text-gray-900">
+                  <p className="text-lg md:text-2xl font-bold text-gray-900">
                     {analyticsData.overview.avgClicksPerLink}
                   </p>
                   <div className="flex items-center mt-1">
@@ -376,28 +376,28 @@ export default function Analytics() {
                     <span className="text-xs text-red-600">-3.1%</span>
                   </div>
                 </div>
-                <BarChart3 className="w-8 h-8 text-orange-600" />
+                <BarChart3 className="w-6 h-6 md:w-8 md:h-8 text-orange-600" />
               </div>
             </CardContent>
           </Card>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-6 md:mb-8">
           {/* Device Breakdown */}
           <Card>
             <CardHeader>
-              <CardTitle>Device Breakdown</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-lg md:text-xl">Device Breakdown</CardTitle>
+              <CardDescription className="text-sm md:text-base">
                 Traffic distribution by device type
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 md:p-6">
               <div className="flex flex-col items-center space-y-6">
                 {/* Pie Chart */}
-                <div className="relative w-60 h-60 group">
+                <div className="relative w-48 h-48 md:w-60 md:h-60 group">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-purple-50 to-green-50 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
                   <svg
-                    className="w-60 h-60 transform -rotate-90 drop-shadow-lg"
+                    className="w-48 h-48 md:w-60 md:h-60 transform -rotate-90 drop-shadow-lg"
                     viewBox="0 0 240 240"
                     style={{
                       filter: "drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))",
@@ -410,7 +410,7 @@ export default function Analytics() {
                       r="95"
                       fill="transparent"
                       stroke="#f1f5f9"
-                      strokeWidth="50"
+                      strokeWidth="40"
                     />
 
                     {/* Mobile slice */}
@@ -420,7 +420,7 @@ export default function Analytics() {
                       r="95"
                       fill="transparent"
                       stroke="#16a34a"
-                      strokeWidth={hoveredSegment === "mobile" ? "55" : "50"}
+                      strokeWidth={hoveredSegment === "mobile" ? "45" : "40"}
                       strokeDasharray={`${(parseFloat(devicePercentages.mobile) / 100) * 596.9} 596.9`}
                       strokeDashoffset="0"
                       className={`transition-all duration-300 cursor-pointer ${
@@ -458,7 +458,7 @@ export default function Analytics() {
                       r="95"
                       fill="transparent"
                       stroke="#2563eb"
-                      strokeWidth={hoveredSegment === "desktop" ? "55" : "50"}
+                      strokeWidth={hoveredSegment === "desktop" ? "45" : "40"}
                       strokeDasharray={`${(parseFloat(devicePercentages.desktop) / 100) * 596.9} 596.9`}
                       strokeDashoffset={`-${(parseFloat(devicePercentages.mobile) / 100) * 596.9}`}
                       className={`transition-all duration-300 cursor-pointer ${
@@ -496,7 +496,7 @@ export default function Analytics() {
                       r="95"
                       fill="transparent"
                       stroke="#9333ea"
-                      strokeWidth={hoveredSegment === "tablet" ? "55" : "50"}
+                      strokeWidth={hoveredSegment === "tablet" ? "45" : "40"}
                       strokeDasharray={`${(parseFloat(devicePercentages.tablet) / 100) * 596.9} 596.9`}
                       strokeDashoffset={`-${((parseFloat(devicePercentages.mobile) + parseFloat(devicePercentages.desktop)) / 100) * 596.9}`}
                       className={`transition-all duration-300 cursor-pointer ${
@@ -530,17 +530,17 @@ export default function Analytics() {
 
                   {/* Center label */}
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                    <div className="text-center bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg">
-                      <p className="text-3xl font-bold text-gray-900">
+                    <div className="text-center bg-white/90 backdrop-blur-sm rounded-full p-3 md:p-6 shadow-lg">
+                      <p className="text-xl md:text-3xl font-bold text-gray-900">
                         {totalDeviceClicks.toLocaleString()}
                       </p>
-                      <p className="text-sm text-gray-500">Total Clicks</p>
+                      <p className="text-xs md:text-sm text-gray-500">Total Clicks</p>
                     </div>
                   </div>
 
                   {/* Tooltip */}
                   {tooltipData && (
-                    <div className="absolute top-4 right-4 bg-gray-900 text-white px-3 py-2 rounded-lg shadow-xl z-10 animate-in fade-in duration-200">
+                    <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-gray-900 text-white px-2 py-1 md:px-3 md:py-2 rounded-lg shadow-xl z-10 animate-in fade-in duration-200">
                       <div className="text-sm font-medium">
                         {tooltipData.device}
                       </div>
@@ -555,7 +555,7 @@ export default function Analytics() {
                 {/* Interactive Legend */}
                 <div className="space-y-3 w-full">
                   <div
-                    className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 cursor-pointer ${
+                    className={`flex items-center justify-between p-2 md:p-3 rounded-lg transition-all duration-200 cursor-pointer ${
                       hoveredSegment === "mobile"
                         ? "bg-green-50 border-l-4 border-green-500 shadow-sm"
                         : hoveredSegment && hoveredSegment !== "mobile"
@@ -575,7 +575,7 @@ export default function Analytics() {
                       setTooltipData(null);
                     }}
                   >
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2 md:space-x-3">
                       <div
                         className={`w-4 h-4 rounded-full transition-all duration-200 ${
                           hoveredSegment === "mobile"
@@ -584,14 +584,14 @@ export default function Analytics() {
                         }`}
                       ></div>
                       <Smartphone
-                        className={`w-5 h-5 transition-colors duration-200 ${
+                        className={`w-4 h-4 md:w-5 md:h-5 transition-colors duration-200 ${
                           hoveredSegment === "mobile"
                             ? "text-green-500"
                             : "text-green-600"
                         }`}
                       />
                       <span
-                        className={`text-sm font-medium transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-medium transition-colors duration-200 ${
                           hoveredSegment === "mobile"
                             ? "text-green-700"
                             : "text-gray-900"
@@ -600,12 +600,12 @@ export default function Analytics() {
                         Mobile
                       </span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-sm text-gray-600">
+                    <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
+                      <span className="text-xs md:text-sm text-gray-600">
                         {analyticsData.devices.mobile.toLocaleString()}
                       </span>
                       <span
-                        className={`text-sm font-bold transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-bold transition-colors duration-200 ${
                           hoveredSegment === "mobile"
                             ? "text-green-700"
                             : "text-gray-900"
@@ -617,7 +617,7 @@ export default function Analytics() {
                   </div>
 
                   <div
-                    className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 cursor-pointer ${
+                    className={`flex items-center justify-between p-2 md:p-3 rounded-lg transition-all duration-200 cursor-pointer ${
                       hoveredSegment === "desktop"
                         ? "bg-blue-50 border-l-4 border-blue-500 shadow-sm"
                         : hoveredSegment && hoveredSegment !== "desktop"
@@ -637,7 +637,7 @@ export default function Analytics() {
                       setTooltipData(null);
                     }}
                   >
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2 md:space-x-3">
                       <div
                         className={`w-4 h-4 rounded-full transition-all duration-200 ${
                           hoveredSegment === "desktop"
@@ -646,14 +646,14 @@ export default function Analytics() {
                         }`}
                       ></div>
                       <Monitor
-                        className={`w-5 h-5 transition-colors duration-200 ${
+                        className={`w-4 h-4 md:w-5 md:h-5 transition-colors duration-200 ${
                           hoveredSegment === "desktop"
                             ? "text-blue-500"
                             : "text-blue-600"
                         }`}
                       />
                       <span
-                        className={`text-sm font-medium transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-medium transition-colors duration-200 ${
                           hoveredSegment === "desktop"
                             ? "text-blue-700"
                             : "text-gray-900"
@@ -662,12 +662,12 @@ export default function Analytics() {
                         Desktop
                       </span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-sm text-gray-600">
+                    <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
+                      <span className="text-xs md:text-sm text-gray-600">
                         {analyticsData.devices.desktop.toLocaleString()}
                       </span>
                       <span
-                        className={`text-sm font-bold transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-bold transition-colors duration-200 ${
                           hoveredSegment === "desktop"
                             ? "text-blue-700"
                             : "text-gray-900"
@@ -679,7 +679,7 @@ export default function Analytics() {
                   </div>
 
                   <div
-                    className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 cursor-pointer ${
+                    className={`flex items-center justify-between p-2 md:p-3 rounded-lg transition-all duration-200 cursor-pointer ${
                       hoveredSegment === "tablet"
                         ? "bg-purple-50 border-l-4 border-purple-500 shadow-sm"
                         : hoveredSegment && hoveredSegment !== "tablet"
@@ -699,7 +699,7 @@ export default function Analytics() {
                       setTooltipData(null);
                     }}
                   >
-                    <div className="flex items-center space-x-3">
+                    <div className="flex items-center space-x-2 md:space-x-3">
                       <div
                         className={`w-4 h-4 rounded-full transition-all duration-200 ${
                           hoveredSegment === "tablet"
@@ -708,14 +708,14 @@ export default function Analytics() {
                         }`}
                       ></div>
                       <Monitor
-                        className={`w-5 h-5 transition-colors duration-200 ${
+                        className={`w-4 h-4 md:w-5 md:h-5 transition-colors duration-200 ${
                           hoveredSegment === "tablet"
                             ? "text-purple-500"
                             : "text-purple-600"
                         }`}
                       />
                       <span
-                        className={`text-sm font-medium transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-medium transition-colors duration-200 ${
                           hoveredSegment === "tablet"
                             ? "text-purple-700"
                             : "text-gray-900"
@@ -724,12 +724,12 @@ export default function Analytics() {
                         Tablet
                       </span>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <span className="text-sm text-gray-600">
+                    <div className="flex flex-col md:flex-row md:items-center md:space-x-2">
+                      <span className="text-xs md:text-sm text-gray-600">
                         {analyticsData.devices.tablet.toLocaleString()}
                       </span>
                       <span
-                        className={`text-sm font-bold transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-bold transition-colors duration-200 ${
                           hoveredSegment === "tablet"
                             ? "text-purple-700"
                             : "text-gray-900"
@@ -747,12 +747,12 @@ export default function Analytics() {
           {/* Top Locations */}
           <Card>
             <CardHeader>
-              <CardTitle>Top Locations</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-lg md:text-xl">Top Locations</CardTitle>
+              <CardDescription className="text-sm md:text-base">
                 Geographic distribution of clicks
               </CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="p-4 md:p-6">
               <div className="space-y-4">
                 {analyticsData.locations.map((location, index) => (
                   <div
@@ -761,15 +761,15 @@ export default function Analytics() {
                   >
                     <div className="flex items-center space-x-2">
                       <Globe className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm font-medium">
+                      <span className="text-xs md:text-sm font-medium">
                         {location.country}
                       </span>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <span className="text-sm text-gray-600">
+                      <span className="text-xs md:text-sm text-gray-600">
                         {location.clicks.toLocaleString()}
                       </span>
-                      <span className="text-sm font-medium">
+                      <span className="text-xs md:text-sm font-medium">
                         {location.percentage}%
                       </span>
                     </div>
@@ -783,28 +783,28 @@ export default function Analytics() {
         {/* Top Performing Links */}
         <Card>
           <CardHeader>
-            <CardTitle>Top Performing Links</CardTitle>
-            <CardDescription>
+            <CardTitle className="text-lg md:text-xl">Top Performing Links</CardTitle>
+            <CardDescription className="text-sm md:text-base">
               Your most successful shortened URLs
             </CardDescription>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-4 md:p-6">
             <div className="space-y-4">
               {analyticsData.topLinks.map((link, index) => (
                 <div
                   key={link.id}
-                  className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition-colors"
+                  className="flex flex-col md:flex-row md:items-center md:justify-between p-3 md:p-4 border rounded-lg hover:bg-gray-50 transition-colors gap-3"
                 >
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-2 mb-1">
                       <Badge variant="outline" className="text-xs">
                         #{index + 1}
                       </Badge>
-                      <p className="text-sm font-medium text-blue-600 truncate">
+                      <p className="text-xs md:text-sm font-medium text-blue-600 truncate">
                         {link.shortUrl}
                       </p>
                     </div>
-                    <p className="text-xs text-gray-500 truncate">
+                    <p className="text-xs md:text-sm text-gray-500 truncate">
                       {link.originalUrl}
                     </p>
                     {link.description && (
@@ -813,21 +813,21 @@ export default function Analytics() {
                       </p>
                     )}
                   </div>
-                  <div className="flex items-center space-x-6 text-center">
+                  <div className="flex items-center justify-between md:space-x-6 text-center">
                     <div>
-                      <p className="text-lg font-bold text-gray-900">
+                      <p className="text-sm md:text-lg font-bold text-gray-900">
                         {link.clicks.toLocaleString()}
                       </p>
                       <p className="text-xs text-gray-500">Clicks</p>
                     </div>
                     <div>
-                      <p className="text-lg font-bold text-gray-900">
+                      <p className="text-sm md:text-lg font-bold text-gray-900">
                         {link.views.toLocaleString()}
                       </p>
                       <p className="text-xs text-gray-500">Views</p>
                     </div>
                     <div>
-                      <p className="text-lg font-bold text-gray-900">
+                      <p className="text-sm md:text-lg font-bold text-gray-900">
                         {link.conversionRate}%
                       </p>
                       <p className="text-xs text-gray-500">CVR</p>

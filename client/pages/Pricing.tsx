@@ -317,29 +317,29 @@ export default function Pricing() {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12 md:mb-16">
           {plans.map((plan, index) => (
             <Card
               key={plan.name}
               className={`relative overflow-hidden transition-all hover:shadow-xl ${
                 plan.popular
-                  ? "border-2 border-blue-500 shadow-lg scale-105"
+                  ? "border-2 border-blue-500 shadow-lg md:scale-105"
                   : "border border-gray-200 hover:border-gray-300"
               }`}
             >
               {plan.popular && (
                 <div className="absolute top-0 left-0 right-0">
-                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-2 text-sm font-medium">
+                  <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white text-center py-2 text-xs md:text-sm font-medium">
                     <Star className="w-4 h-4 inline mr-1" />
                     Most Popular
                   </div>
                 </div>
               )}
 
-              <CardHeader className={plan.popular ? "pt-12" : "pt-6"}>
+              <CardHeader className={`${plan.popular ? "pt-12" : "pt-6"} p-4 md:p-6`}>
                 <div className="flex items-center space-x-3 mb-4">
                   <div
-                    className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+                    className={`w-10 h-10 md:w-12 md:h-12 rounded-lg flex items-center justify-center ${
                       plan.name === "Free"
                         ? "bg-gray-100 text-gray-600"
                         : plan.name === "Pro"
@@ -352,8 +352,8 @@ export default function Pricing() {
                     {plan.icon}
                   </div>
                   <div>
-                    <CardTitle className="text-xl">{plan.name}</CardTitle>
-                    <CardDescription className="text-sm">
+                    <CardTitle className="text-lg md:text-xl">{plan.name}</CardTitle>
+                    <CardDescription className="text-xs md:text-sm">
                       {plan.description}
                     </CardDescription>
                   </div>
@@ -361,17 +361,17 @@ export default function Pricing() {
 
                 <div className="space-y-2">
                   <div className="flex items-baseline space-x-2">
-                    <span className="text-4xl font-bold text-gray-900">
+                    <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
                       ${getCurrentPrice(plan)}
                     </span>
-                    <span className="text-gray-500">
+                    <span className="text-sm md:text-base text-gray-500">
                       /{getBillingLabel(billingCycle)}
                     </span>
                   </div>
                   {getSavings(plan) && (
                     <Badge
                       variant="secondary"
-                      className="bg-green-100 text-green-700"
+                      className="bg-green-100 text-green-700 text-xs"
                     >
                       {getSavings(plan)}
                     </Badge>
@@ -379,13 +379,13 @@ export default function Pricing() {
                 </div>
               </CardHeader>
 
-              <CardContent className="space-y-6">
+              <CardContent className="space-y-4 md:space-y-6 p-4 md:p-6">
                 <Button
                   className={`w-full ${
                     plan.buttonVariant === "default"
                       ? "bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
                       : ""
-                  }`}
+                  } min-h-[44px] text-sm md:text-base`}
                   variant={plan.buttonVariant}
                   onClick={() =>
                     plan.name === "Enterprise"
@@ -398,10 +398,10 @@ export default function Pricing() {
 
                 {/* Usage Limits */}
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-gray-900">
+                  <h4 className="text-sm md:text-base font-semibold text-gray-900">
                     What's included:
                   </h4>
-                  <div className="space-y-2 text-sm">
+                  <div className="space-y-2 text-xs md:text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Links</span>
                       <span className="font-medium">{plan.limits.links}</span>
@@ -437,12 +437,12 @@ export default function Pricing() {
 
                 {/* Features List */}
                 <div className="space-y-3">
-                  <h4 className="font-semibold text-gray-900">Features:</h4>
+                  <h4 className="text-sm md:text-base font-semibold text-gray-900">Features:</h4>
                   <ul className="space-y-2">
                     {plan.features.map((feature, featureIndex) => (
                       <li
                         key={featureIndex}
-                        className="flex items-start space-x-2 text-sm"
+                        className="flex items-start space-x-2 text-xs md:text-sm"
                       >
                         <Check className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
                         <span className="text-gray-600">{feature}</span>
@@ -456,33 +456,33 @@ export default function Pricing() {
         </div>
 
         {/* Feature Comparison Table */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-16">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-12 md:mb-16">
           <div className="px-6 py-4 border-b">
-            <h3 className="text-2xl font-bold text-gray-900">
+            <h3 className="text-xl md:text-2xl font-bold text-gray-900">
               Feature Comparison
             </h3>
-            <p className="text-gray-600">
+            <p className="text-sm md:text-base text-gray-600">
               Compare all features across our pricing plans
             </p>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto table-responsive">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="text-left px-6 py-4 font-semibold text-gray-900">
+                  <th className="text-left px-4 md:px-6 py-3 md:py-4 font-semibold text-gray-900 text-sm md:text-base">
                     Features
                   </th>
-                  <th className="text-center px-6 py-4 font-semibold text-gray-900">
+                  <th className="text-center px-3 md:px-6 py-3 md:py-4 font-semibold text-gray-900 text-sm md:text-base">
                     Free
                   </th>
-                  <th className="text-center px-6 py-4 font-semibold text-gray-900">
+                  <th className="text-center px-3 md:px-6 py-3 md:py-4 font-semibold text-gray-900 text-sm md:text-base">
                     Pro
                   </th>
-                  <th className="text-center px-6 py-4 font-semibold text-gray-900">
+                  <th className="text-center px-3 md:px-6 py-3 md:py-4 font-semibold text-gray-900 text-sm md:text-base">
                     Business
                   </th>
-                  <th className="text-center px-6 py-4 font-semibold text-gray-900">
+                  <th className="text-center px-3 md:px-6 py-3 md:py-4 font-semibold text-gray-900 text-sm md:text-base">
                     Enterprise
                   </th>
                 </tr>
@@ -575,10 +575,10 @@ export default function Pricing() {
                   },
                 ].map((feature, index) => (
                   <tr key={index} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 font-medium text-gray-900">
+                    <td className="px-4 md:px-6 py-3 md:py-4 font-medium text-gray-900 text-sm md:text-base">
                       {feature.name}
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-center">
                       {typeof feature.free === "boolean" ? (
                         feature.free ? (
                           <Check className="w-5 h-5 text-green-500 mx-auto" />
@@ -586,12 +586,12 @@ export default function Pricing() {
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )
                       ) : (
-                        <span className="text-sm text-gray-600">
+                        <span className="text-xs md:text-sm text-gray-600">
                           {feature.free}
                         </span>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-center">
                       {typeof feature.pro === "boolean" ? (
                         feature.pro ? (
                           <Check className="w-5 h-5 text-green-500 mx-auto" />
@@ -599,12 +599,12 @@ export default function Pricing() {
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )
                       ) : (
-                        <span className="text-sm text-gray-600">
+                        <span className="text-xs md:text-sm text-gray-600">
                           {feature.pro}
                         </span>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-center">
                       {typeof feature.business === "boolean" ? (
                         feature.business ? (
                           <Check className="w-5 h-5 text-green-500 mx-auto" />
@@ -612,12 +612,12 @@ export default function Pricing() {
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )
                       ) : (
-                        <span className="text-sm text-gray-600">
+                        <span className="text-xs md:text-sm text-gray-600">
                           {feature.business}
                         </span>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-center">
+                    <td className="px-3 md:px-6 py-3 md:py-4 text-center">
                       {typeof feature.enterprise === "boolean" ? (
                         feature.enterprise ? (
                           <Check className="w-5 h-5 text-green-500 mx-auto" />
@@ -625,7 +625,7 @@ export default function Pricing() {
                           <X className="w-5 h-5 text-gray-300 mx-auto" />
                         )
                       ) : (
-                        <span className="text-sm text-gray-600">
+                        <span className="text-xs md:text-sm text-gray-600">
                           {feature.enterprise}
                         </span>
                       )}
@@ -638,15 +638,15 @@ export default function Pricing() {
         </div>
 
         {/* FAQ Section */}
-        <div className="max-w-3xl mx-auto mb-16">
+        <div className="max-w-3xl mx-auto mb-12 md:mb-16">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 px-4">
               Frequently Asked Questions
             </h2>
-            <p className="text-gray-600">Got questions? We've got answers.</p>
+            <p className="text-sm md:text-base text-gray-600 px-4">Got questions? We've got answers.</p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4 md:space-y-6">
             {[
               {
                 question: "What happens when I exceed my plan limits?",
@@ -676,10 +676,10 @@ export default function Pricing() {
             ].map((faq, index) => (
               <Card key={index}>
                 <CardHeader>
-                  <CardTitle className="text-lg">{faq.question}</CardTitle>
+                  <CardTitle className="text-base md:text-lg">{faq.question}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-600">{faq.answer}</p>
+                <CardContent className="p-4 md:p-6 pt-0">
+                  <p className="text-sm md:text-base text-gray-600">{faq.answer}</p>
                 </CardContent>
               </Card>
             ))}
@@ -688,25 +688,25 @@ export default function Pricing() {
 
         {/* CTA Section */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
-            <h2 className="text-3xl font-bold mb-4">Ready to get started?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 md:p-8 lg:p-12 text-white">
+            <h2 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 px-4">Ready to get started?</h2>
+            <p className="text-base md:text-lg lg:text-xl text-blue-100 mb-6 md:mb-8 max-w-2xl mx-auto px-4">
               Join thousands of users who trust LinklyPro for their URL
               shortening needs.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col gap-3 md:gap-4 justify-center max-w-md mx-auto">
               <Button
                 size="lg"
                 variant="secondary"
                 onClick={() => navigate("/signup")}
-                className="text-lg px-8 py-3"
+                className="text-base md:text-lg px-6 md:px-8 py-3 min-h-[44px]"
               >
                 Start Free Trial
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="text-lg px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600"
+                className="text-base md:text-lg px-6 md:px-8 py-3 text-white border-white hover:bg-white hover:text-blue-600 min-h-[44px]"
                 onClick={() =>
                   window.open(
                     "mailto:ayushd785@gmail.com?subject=Enterprise Plan Inquiry&body=Hi, I am interested in the Enterprise plan. Please provide more details.",
