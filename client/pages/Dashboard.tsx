@@ -681,6 +681,7 @@ export default function Dashboard() {
               </Button>
               <Button
                 variant="outline"
+                onClick={() => navigate('/settings')}
                 className="h-auto p-4 flex flex-col items-center space-y-2"
               >
                 <Settings className="w-6 h-6 text-gray-600" />
