@@ -28,7 +28,11 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Custom hook for animated counters
-const useAnimatedCounter = (end: number, duration: number = 2000, startAnimation: boolean = false) => {
+const useAnimatedCounter = (
+  end: number,
+  duration: number = 2000,
+  startAnimation: boolean = false,
+) => {
   const [count, setCount] = useState(0);
   const countRef = useRef(0);
   const startTimeRef = useRef<number | null>(null);
@@ -41,7 +45,10 @@ const useAnimatedCounter = (end: number, duration: number = 2000, startAnimation
         startTimeRef.current = timestamp;
       }
 
-      const progress = Math.min((timestamp - startTimeRef.current) / duration, 1);
+      const progress = Math.min(
+        (timestamp - startTimeRef.current) / duration,
+        1,
+      );
       const easeOutQuart = 1 - Math.pow(1 - progress, 4); // Smooth easing
       const currentCount = Math.floor(easeOutQuart * end);
 
@@ -76,7 +83,7 @@ export default function Index() {
     features: false,
     about: false,
     developer: false,
-    stats: false
+    stats: false,
   });
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -93,11 +100,11 @@ export default function Index() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
+            entry.target.classList.add("revealed");
           }
         });
       },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
     );
 
     // Section visibility observer
@@ -106,26 +113,26 @@ export default function Index() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const section = entry.target.id;
-            setIsVisible(prev => ({ ...prev, [section]: true }));
+            setIsVisible((prev) => ({ ...prev, [section]: true }));
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     // Observe scroll reveal elements
-    const scrollElements = document.querySelectorAll('.scroll-reveal');
-    scrollElements.forEach(el => scrollObserver.observe(el));
+    const scrollElements = document.querySelectorAll(".scroll-reveal");
+    scrollElements.forEach((el) => scrollObserver.observe(el));
 
     // Observe sections
-    const sections = ['hero', 'features', 'about', 'developer', 'stats'];
-    sections.forEach(section => {
+    const sections = ["hero", "features", "about", "developer", "stats"];
+    sections.forEach((section) => {
       const element = document.getElementById(section);
       if (element) sectionObserver.observe(element);
     });
 
     // Hero is visible immediately
-    setIsVisible(prev => ({ ...prev, hero: true }));
+    setIsVisible((prev) => ({ ...prev, hero: true }));
 
     return () => {
       scrollObserver.disconnect();
@@ -160,9 +167,9 @@ export default function Index() {
 
   const downloadQRCode = () => {
     if (qrCode) {
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = qrCode;
-      link.download = 'qr-code.png';
+      link.download = "qr-code.png";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -175,12 +182,12 @@ export default function Index() {
         // Convert QR code URL to blob for sharing
         const response = await fetch(qrCode);
         const blob = await response.blob();
-        const file = new File([blob], 'qr-code.png', { type: 'image/png' });
+        const file = new File([blob], "qr-code.png", { type: "image/png" });
 
         await navigator.share({
-          title: 'QR Code - LinklyPro',
+          title: "QR Code - LinklyPro",
           text: `QR Code for: ${url}`,
-          files: [file]
+          files: [file],
         });
       } catch (error) {
         // Fallback to copying the original URL
@@ -246,7 +253,11 @@ export default function Index() {
               size="icon"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -305,7 +316,10 @@ export default function Index() {
       </header>
 
       {/* Hero Section */}
-      <section id="hero" className="container mx-auto px-4 py-12 md:py-20 text-center">
+      <section
+        id="hero"
+        className="container mx-auto px-4 py-12 md:py-20 text-center"
+      >
         <div className="max-w-4xl mx-auto">
           <Badge variant="secondary" className="mb-4 animate-slide-up-delay-1">
             Not your regular Url Shortner
@@ -378,7 +392,9 @@ export default function Index() {
               {shortUrl && (
                 <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
                   <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                    <span className="text-blue-800 font-medium text-sm sm:text-base break-all">{shortUrl}</span>
+                    <span className="text-blue-800 font-medium text-sm sm:text-base break-all">
+                      {shortUrl}
+                    </span>
                     <Button
                       size="sm"
                       variant="outline"
@@ -608,31 +624,42 @@ export default function Index() {
           </div>
 
           {/* Stats Section */}
-          <div id="stats" className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 scroll-reveal">
+          <div
+            id="stats"
+            className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 scroll-reveal"
+          >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
               <div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {activeUsers}M+
                 </div>
-                <div className="text-gray-600 font-medium text-sm sm:text-base">Active Users</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Active Users
+                </div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {linksCreated}M+
                 </div>
-                <div className="text-gray-600 font-medium text-sm sm:text-base">Links Created</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Links Created
+                </div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {uptime}%
                 </div>
-                <div className="text-gray-600 font-medium text-sm sm:text-base">Uptime</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Uptime
+                </div>
               </div>
               <div>
                 <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {countries}+
                 </div>
-                <div className="text-gray-600 font-medium text-sm sm:text-base">Countries</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">
+                  Countries
+                </div>
               </div>
             </div>
           </div>
@@ -720,7 +747,12 @@ export default function Index() {
                   <div className="mt-6 flex justify-center">
                     <Button
                       className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white shadow-lg hover:shadow-xl transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 ease-out flex items-center space-x-2"
-                      onClick={() => window.open('https://buymeacoffee.com/ayushd785', '_blank')}
+                      onClick={() =>
+                        window.open(
+                          "https://buymeacoffee.com/ayushd785",
+                          "_blank",
+                        )
+                      }
                     >
                       <Coffee className="w-4 h-4" />
                       <span className="font-medium">Buy me a coffee</span>
