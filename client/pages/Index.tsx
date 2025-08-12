@@ -655,7 +655,7 @@ export default function Index() {
                     <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
                       Built with love using
                     </h4>
-                    <div className="flex flex-wrap justify-center md:justify-start gap-2">
+                    <div className="flex flex-wrap justify-center gap-2">
                       {[
                         "React",
                         "TypeScript",
