@@ -78,6 +78,7 @@ export default function Index() {
     developer: false,
     stats: false
   });
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Animated counters for stats section
   const activeUsers = useAnimatedCounter(10, 2000, isVisible.stats);
