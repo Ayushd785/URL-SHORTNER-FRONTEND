@@ -423,41 +423,125 @@ export default function Analytics() {
                   )}
                 </div>
 
-                {/* Legend */}
+                {/* Interactive Legend */}
                 <div className="space-y-3 w-full">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-green-600 rounded-full"></div>
-                      <Smartphone className="w-4 h-4 text-green-600" />
-                      <span className="text-sm font-medium">Mobile</span>
+                  <div
+                    className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 cursor-pointer ${
+                      hoveredSegment === "mobile"
+                        ? "bg-green-50 border-l-4 border-green-500 shadow-sm"
+                        : hoveredSegment && hoveredSegment !== "mobile"
+                          ? "opacity-60"
+                          : "hover:bg-gray-50"
+                    }`}
+                    onMouseEnter={() => {
+                      setHoveredSegment("mobile");
+                      setTooltipData({
+                        device: "Mobile",
+                        count: analyticsData.devices.mobile,
+                        percentage: devicePercentages.mobile
+                      });
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredSegment(null);
+                      setTooltipData(null);
+                    }}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-4 h-4 rounded-full transition-all duration-200 ${
+                        hoveredSegment === "mobile" ? "bg-green-400 shadow-lg ring-2 ring-green-200" : "bg-green-600"
+                      }`}></div>
+                      <Smartphone className={`w-5 h-5 transition-colors duration-200 ${
+                        hoveredSegment === "mobile" ? "text-green-500" : "text-green-600"
+                      }`} />
+                      <span className={`text-sm font-medium transition-colors duration-200 ${
+                        hoveredSegment === "mobile" ? "text-green-700" : "text-gray-900"
+                      }`}>Mobile</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-sm text-gray-600">{analyticsData.devices.mobile.toLocaleString()}</span>
-                      <span className="text-sm font-medium">{devicePercentages.mobile}%</span>
+                      <span className={`text-sm font-bold transition-colors duration-200 ${
+                        hoveredSegment === "mobile" ? "text-green-700" : "text-gray-900"
+                      }`}>{devicePercentages.mobile}%</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
-                      <Monitor className="w-4 h-4 text-blue-600" />
-                      <span className="text-sm font-medium">Desktop</span>
+                  <div
+                    className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 cursor-pointer ${
+                      hoveredSegment === "desktop"
+                        ? "bg-blue-50 border-l-4 border-blue-500 shadow-sm"
+                        : hoveredSegment && hoveredSegment !== "desktop"
+                          ? "opacity-60"
+                          : "hover:bg-gray-50"
+                    }`}
+                    onMouseEnter={() => {
+                      setHoveredSegment("desktop");
+                      setTooltipData({
+                        device: "Desktop",
+                        count: analyticsData.devices.desktop,
+                        percentage: devicePercentages.desktop
+                      });
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredSegment(null);
+                      setTooltipData(null);
+                    }}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-4 h-4 rounded-full transition-all duration-200 ${
+                        hoveredSegment === "desktop" ? "bg-blue-400 shadow-lg ring-2 ring-blue-200" : "bg-blue-600"
+                      }`}></div>
+                      <Monitor className={`w-5 h-5 transition-colors duration-200 ${
+                        hoveredSegment === "desktop" ? "text-blue-500" : "text-blue-600"
+                      }`} />
+                      <span className={`text-sm font-medium transition-colors duration-200 ${
+                        hoveredSegment === "desktop" ? "text-blue-700" : "text-gray-900"
+                      }`}>Desktop</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-sm text-gray-600">{analyticsData.devices.desktop.toLocaleString()}</span>
-                      <span className="text-sm font-medium">{devicePercentages.desktop}%</span>
+                      <span className={`text-sm font-bold transition-colors duration-200 ${
+                        hoveredSegment === "desktop" ? "text-blue-700" : "text-gray-900"
+                      }`}>{devicePercentages.desktop}%</span>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-3 h-3 bg-purple-600 rounded-full"></div>
-                      <Monitor className="w-4 h-4 text-purple-600" />
-                      <span className="text-sm font-medium">Tablet</span>
+                  <div
+                    className={`flex items-center justify-between p-3 rounded-lg transition-all duration-200 cursor-pointer ${
+                      hoveredSegment === "tablet"
+                        ? "bg-purple-50 border-l-4 border-purple-500 shadow-sm"
+                        : hoveredSegment && hoveredSegment !== "tablet"
+                          ? "opacity-60"
+                          : "hover:bg-gray-50"
+                    }`}
+                    onMouseEnter={() => {
+                      setHoveredSegment("tablet");
+                      setTooltipData({
+                        device: "Tablet",
+                        count: analyticsData.devices.tablet,
+                        percentage: devicePercentages.tablet
+                      });
+                    }}
+                    onMouseLeave={() => {
+                      setHoveredSegment(null);
+                      setTooltipData(null);
+                    }}
+                  >
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-4 h-4 rounded-full transition-all duration-200 ${
+                        hoveredSegment === "tablet" ? "bg-purple-400 shadow-lg ring-2 ring-purple-200" : "bg-purple-600"
+                      }`}></div>
+                      <Monitor className={`w-5 h-5 transition-colors duration-200 ${
+                        hoveredSegment === "tablet" ? "text-purple-500" : "text-purple-600"
+                      }`} />
+                      <span className={`text-sm font-medium transition-colors duration-200 ${
+                        hoveredSegment === "tablet" ? "text-purple-700" : "text-gray-900"
+                      }`}>Tablet</span>
                     </div>
                     <div className="flex items-center space-x-2">
                       <span className="text-sm text-gray-600">{analyticsData.devices.tablet.toLocaleString()}</span>
-                      <span className="text-sm font-medium">{devicePercentages.tablet}%</span>
+                      <span className={`text-sm font-bold transition-colors duration-200 ${
+                        hoveredSegment === "tablet" ? "text-purple-700" : "text-gray-900"
+                      }`}>{devicePercentages.tablet}%</span>
                     </div>
                   </div>
                 </div>
