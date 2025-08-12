@@ -212,26 +212,50 @@ export default function Dashboard() {
               </p>
               <p className="text-xs text-gray-500">{userData.plan}</p>
             </div>
-            <Avatar className="w-8 h-8">
-              {userData.avatar && userData.avatar.startsWith("data:") ? (
-                <AvatarImage src={userData.avatar} />
-              ) : userData.avatar ? (
-                <div className="w-full h-full flex items-center justify-center text-lg">
-                  {userData.avatar}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar className="w-8 h-8 cursor-pointer hover:ring-2 hover:ring-blue-200 transition-all">
+                  {userData.avatar && userData.avatar.startsWith("data:") ? (
+                    <AvatarImage src={userData.avatar} />
+                  ) : userData.avatar ? (
+                    <div className="w-full h-full flex items-center justify-center text-lg">
+                      {userData.avatar}
+                    </div>
+                  ) : (
+                    <AvatarFallback>
+                      {getInitials(userData.firstName, userData.lastName)}
+                    </AvatarFallback>
+                  )}
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <div className="px-3 py-2">
+                  <div className="flex items-center space-x-2">
+                    <User className="w-4 h-4 text-gray-500" />
+                    <div>
+                      <p className="text-sm font-medium">{userData.firstName} {userData.lastName}</p>
+                      <p className="text-xs text-gray-500">{userData.plan}</p>
+                    </div>
+                  </div>
                 </div>
-              ) : (
-                <AvatarFallback>
-                  {getInitials(userData.firstName, userData.lastName)}
-                </AvatarFallback>
-              )}
-            </Avatar>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => navigate("/login")}
-            >
-              <LogOut className="w-4 h-4" />
-            </Button>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4" />
+                  <div>
+                    <p className="text-sm">{userData.email}</p>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onClick={() => navigate('/settings')} className="flex items-center space-x-2">
+                  <Settings className="w-4 h-4" />
+                  <span>Account Settings</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => navigate('/login')} className="flex items-center space-x-2 text-red-600">
+                  <LogOut className="w-4 h-4" />
+                  <span>Sign Out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>
