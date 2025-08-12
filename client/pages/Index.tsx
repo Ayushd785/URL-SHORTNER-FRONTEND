@@ -603,7 +603,7 @@ export default function Index() {
                   </div>
 
                   {/* Social Links */}
-                  <div className="flex justify-center md:justify-start space-x-4">
+                  <div className="flex justify-center space-x-4">
                     <Button
                       variant="outline"
                       size="sm"
