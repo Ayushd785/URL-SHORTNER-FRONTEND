@@ -192,6 +192,10 @@ export default function Dashboard() {
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
+            <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
+              <BarChart3 className="w-4 h-4 mr-2" />
+              Dashboard
+            </Button>
             <Button variant="ghost" onClick={() => navigate("/analytics")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
               <BarChart3 className="w-4 h-4 mr-2" />
               Analytics

@@ -277,47 +277,93 @@ export default function Analytics() {
               <CardDescription>Traffic distribution by device type</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <Smartphone className="w-4 h-4 text-green-600" />
-                    <span className="text-sm font-medium">Mobile</span>
+              <div className="flex flex-col items-center space-y-6">
+                {/* Pie Chart */}
+                <div className="relative w-48 h-48">
+                  <svg className="w-48 h-48 transform -rotate-90" viewBox="0 0 200 200">
+                    {/* Mobile slice */}
+                    <circle
+                      cx="100"
+                      cy="100"
+                      r="80"
+                      fill="transparent"
+                      stroke="#16a34a"
+                      strokeWidth="40"
+                      strokeDasharray={`${(parseFloat(devicePercentages.mobile) / 100) * 502.65} 502.65`}
+                      strokeDashoffset="0"
+                      className="transition-all duration-300 hover:stroke-green-500"
+                    />
+                    {/* Desktop slice */}
+                    <circle
+                      cx="100"
+                      cy="100"
+                      r="80"
+                      fill="transparent"
+                      stroke="#2563eb"
+                      strokeWidth="40"
+                      strokeDasharray={`${(parseFloat(devicePercentages.desktop) / 100) * 502.65} 502.65`}
+                      strokeDashoffset={`-${(parseFloat(devicePercentages.mobile) / 100) * 502.65}`}
+                      className="transition-all duration-300 hover:stroke-blue-500"
+                    />
+                    {/* Tablet slice */}
+                    <circle
+                      cx="100"
+                      cy="100"
+                      r="80"
+                      fill="transparent"
+                      stroke="#9333ea"
+                      strokeWidth="40"
+                      strokeDasharray={`${(parseFloat(devicePercentages.tablet) / 100) * 502.65} 502.65`}
+                      strokeDashoffset={`-${((parseFloat(devicePercentages.mobile) + parseFloat(devicePercentages.desktop)) / 100) * 502.65}`}
+                      className="transition-all duration-300 hover:stroke-purple-500"
+                    />
+                  </svg>
+                  {/* Center label */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-center">
+                      <p className="text-2xl font-bold text-gray-900">{totalDeviceClicks.toLocaleString()}</p>
+                      <p className="text-sm text-gray-500">Total Clicks</p>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">{analyticsData.devices.mobile.toLocaleString()}</span>
-                    <span className="text-sm font-medium">{devicePercentages.mobile}%</span>
-                  </div>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-green-600 h-2 rounded-full" style={{ width: `${devicePercentages.mobile}%` }}></div>
                 </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <Monitor className="w-4 h-4 text-blue-600" />
-                    <span className="text-sm font-medium">Desktop</span>
+                {/* Legend */}
+                <div className="space-y-3 w-full">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-green-600 rounded-full"></div>
+                      <Smartphone className="w-4 h-4 text-green-600" />
+                      <span className="text-sm font-medium">Mobile</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm text-gray-600">{analyticsData.devices.mobile.toLocaleString()}</span>
+                      <span className="text-sm font-medium">{devicePercentages.mobile}%</span>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">{analyticsData.devices.desktop.toLocaleString()}</span>
-                    <span className="text-sm font-medium">{devicePercentages.desktop}%</span>
-                  </div>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-blue-600 h-2 rounded-full" style={{ width: `${devicePercentages.desktop}%` }}></div>
-                </div>
 
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-2">
-                    <Monitor className="w-4 h-4 text-purple-600" />
-                    <span className="text-sm font-medium">Tablet</span>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-blue-600 rounded-full"></div>
+                      <Monitor className="w-4 h-4 text-blue-600" />
+                      <span className="text-sm font-medium">Desktop</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm text-gray-600">{analyticsData.devices.desktop.toLocaleString()}</span>
+                      <span className="text-sm font-medium">{devicePercentages.desktop}%</span>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-sm text-gray-600">{analyticsData.devices.tablet.toLocaleString()}</span>
-                    <span className="text-sm font-medium">{devicePercentages.tablet}%</span>
+
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-2">
+                      <div className="w-3 h-3 bg-purple-600 rounded-full"></div>
+                      <Monitor className="w-4 h-4 text-purple-600" />
+                      <span className="text-sm font-medium">Tablet</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-sm text-gray-600">{analyticsData.devices.tablet.toLocaleString()}</span>
+                      <span className="text-sm font-medium">{devicePercentages.tablet}%</span>
+                    </div>
                   </div>
-                </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div className="bg-purple-600 h-2 rounded-full" style={{ width: `${devicePercentages.tablet}%` }}></div>
                 </div>
               </div>
             </CardContent>
