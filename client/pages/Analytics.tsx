@@ -281,52 +281,146 @@ export default function Analytics() {
             <CardContent>
               <div className="flex flex-col items-center space-y-6">
                 {/* Pie Chart */}
-                <div className="relative w-48 h-48">
-                  <svg className="w-48 h-48 transform -rotate-90" viewBox="0 0 200 200">
+                <div className="relative w-60 h-60 group">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-50 via-purple-50 to-green-50 opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+                  <svg
+                    className="w-60 h-60 transform -rotate-90 drop-shadow-lg"
+                    viewBox="0 0 240 240"
+                    style={{ filter: 'drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1))' }}
+                  >
+                    {/* Background circle for subtle depth */}
+                    <circle
+                      cx="120"
+                      cy="120"
+                      r="95"
+                      fill="transparent"
+                      stroke="#f1f5f9"
+                      strokeWidth="50"
+                    />
+
                     {/* Mobile slice */}
                     <circle
-                      cx="100"
-                      cy="100"
-                      r="80"
+                      cx="120"
+                      cy="120"
+                      r="95"
                       fill="transparent"
                       stroke="#16a34a"
-                      strokeWidth="40"
-                      strokeDasharray={`${(parseFloat(devicePercentages.mobile) / 100) * 502.65} 502.65`}
+                      strokeWidth={hoveredSegment === "mobile" ? "55" : "50"}
+                      strokeDasharray={`${(parseFloat(devicePercentages.mobile) / 100) * 596.9} 596.9`}
                       strokeDashoffset="0"
-                      className="transition-all duration-300 hover:stroke-green-500"
+                      className={`transition-all duration-300 cursor-pointer ${
+                        hoveredSegment === "mobile"
+                          ? "stroke-green-400 drop-shadow-lg"
+                          : hoveredSegment && hoveredSegment !== "mobile"
+                            ? "stroke-green-300 opacity-60"
+                            : "stroke-green-600"
+                      }`}
+                      style={{
+                        filter: hoveredSegment === "mobile" ? 'drop-shadow(0 0 8px rgba(34, 197, 94, 0.4))' : 'none',
+                        strokeLinecap: 'round'
+                      }}
+                      onMouseEnter={() => {
+                        setHoveredSegment("mobile");
+                        setTooltipData({
+                          device: "Mobile",
+                          count: analyticsData.devices.mobile,
+                          percentage: devicePercentages.mobile
+                        });
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredSegment(null);
+                        setTooltipData(null);
+                      }}
                     />
+
                     {/* Desktop slice */}
                     <circle
-                      cx="100"
-                      cy="100"
-                      r="80"
+                      cx="120"
+                      cy="120"
+                      r="95"
                       fill="transparent"
                       stroke="#2563eb"
-                      strokeWidth="40"
-                      strokeDasharray={`${(parseFloat(devicePercentages.desktop) / 100) * 502.65} 502.65`}
-                      strokeDashoffset={`-${(parseFloat(devicePercentages.mobile) / 100) * 502.65}`}
-                      className="transition-all duration-300 hover:stroke-blue-500"
+                      strokeWidth={hoveredSegment === "desktop" ? "55" : "50"}
+                      strokeDasharray={`${(parseFloat(devicePercentages.desktop) / 100) * 596.9} 596.9`}
+                      strokeDashoffset={`-${(parseFloat(devicePercentages.mobile) / 100) * 596.9}`}
+                      className={`transition-all duration-300 cursor-pointer ${
+                        hoveredSegment === "desktop"
+                          ? "stroke-blue-400 drop-shadow-lg"
+                          : hoveredSegment && hoveredSegment !== "desktop"
+                            ? "stroke-blue-300 opacity-60"
+                            : "stroke-blue-600"
+                      }`}
+                      style={{
+                        filter: hoveredSegment === "desktop" ? 'drop-shadow(0 0 8px rgba(37, 99, 235, 0.4))' : 'none',
+                        strokeLinecap: 'round'
+                      }}
+                      onMouseEnter={() => {
+                        setHoveredSegment("desktop");
+                        setTooltipData({
+                          device: "Desktop",
+                          count: analyticsData.devices.desktop,
+                          percentage: devicePercentages.desktop
+                        });
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredSegment(null);
+                        setTooltipData(null);
+                      }}
                     />
+
                     {/* Tablet slice */}
                     <circle
-                      cx="100"
-                      cy="100"
-                      r="80"
+                      cx="120"
+                      cy="120"
+                      r="95"
                       fill="transparent"
                       stroke="#9333ea"
-                      strokeWidth="40"
-                      strokeDasharray={`${(parseFloat(devicePercentages.tablet) / 100) * 502.65} 502.65`}
-                      strokeDashoffset={`-${((parseFloat(devicePercentages.mobile) + parseFloat(devicePercentages.desktop)) / 100) * 502.65}`}
-                      className="transition-all duration-300 hover:stroke-purple-500"
+                      strokeWidth={hoveredSegment === "tablet" ? "55" : "50"}
+                      strokeDasharray={`${(parseFloat(devicePercentages.tablet) / 100) * 596.9} 596.9`}
+                      strokeDashoffset={`-${((parseFloat(devicePercentages.mobile) + parseFloat(devicePercentages.desktop)) / 100) * 596.9}`}
+                      className={`transition-all duration-300 cursor-pointer ${
+                        hoveredSegment === "tablet"
+                          ? "stroke-purple-400 drop-shadow-lg"
+                          : hoveredSegment && hoveredSegment !== "tablet"
+                            ? "stroke-purple-300 opacity-60"
+                            : "stroke-purple-600"
+                      }`}
+                      style={{
+                        filter: hoveredSegment === "tablet" ? 'drop-shadow(0 0 8px rgba(147, 51, 234, 0.4))' : 'none',
+                        strokeLinecap: 'round'
+                      }}
+                      onMouseEnter={() => {
+                        setHoveredSegment("tablet");
+                        setTooltipData({
+                          device: "Tablet",
+                          count: analyticsData.devices.tablet,
+                          percentage: devicePercentages.tablet
+                        });
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredSegment(null);
+                        setTooltipData(null);
+                      }}
                     />
                   </svg>
+
                   {/* Center label */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <p className="text-2xl font-bold text-gray-900">{totalDeviceClicks.toLocaleString()}</p>
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="text-center bg-white/90 backdrop-blur-sm rounded-full p-6 shadow-lg">
+                      <p className="text-3xl font-bold text-gray-900">{totalDeviceClicks.toLocaleString()}</p>
                       <p className="text-sm text-gray-500">Total Clicks</p>
                     </div>
                   </div>
+
+                  {/* Tooltip */}
+                  {tooltipData && (
+                    <div className="absolute top-4 right-4 bg-gray-900 text-white px-3 py-2 rounded-lg shadow-xl z-10 animate-in fade-in duration-200">
+                      <div className="text-sm font-medium">{tooltipData.device}</div>
+                      <div className="text-xs text-gray-300">
+                        {tooltipData.count.toLocaleString()} clicks ({tooltipData.percentage}%)
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Legend */}
