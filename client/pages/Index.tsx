@@ -21,6 +21,8 @@ import {
   Coffee,
   Download,
   Share2,
+  Menu,
+  X,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
