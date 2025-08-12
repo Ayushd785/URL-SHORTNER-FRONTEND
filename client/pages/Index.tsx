@@ -608,31 +608,31 @@ export default function Index() {
           </div>
 
           {/* Stats Section */}
-          <div id="stats" className="bg-white rounded-2xl shadow-xl p-12 scroll-reveal">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div id="stats" className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12 scroll-reveal">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {activeUsers}M+
                 </div>
-                <div className="text-gray-600 font-medium">Active Users</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">Active Users</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {linksCreated}M+
                 </div>
-                <div className="text-gray-600 font-medium">Links Created</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">Links Created</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {uptime}%
                 </div>
-                <div className="text-gray-600 font-medium">Uptime</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">Uptime</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
+                <div className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
                   {countries}+
                 </div>
-                <div className="text-gray-600 font-medium">Countries</div>
+                <div className="text-gray-600 font-medium text-sm sm:text-base">Countries</div>
               </div>
             </div>
           </div>
