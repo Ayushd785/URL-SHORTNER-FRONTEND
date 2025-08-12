@@ -10,7 +10,13 @@ import {
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
@@ -165,19 +171,34 @@ export default function Settings() {
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" onClick={() => navigate("/dashboard")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/dashboard")}
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            >
               <BarChart3 className="w-4 h-4 mr-2" />
               Dashboard
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/links")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/links")}
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            >
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/analytics")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/analytics")}
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            >
               <BarChart3 className="w-4 h-4 mr-2" />
               Analytics
             </Button>
-            <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
+            <Button
+              variant="ghost"
+              className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+            >
               <SettingsIcon className="w-4 h-4 mr-2" />
               Settings
             </Button>
@@ -192,7 +213,8 @@ export default function Settings() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Avatar className="w-8 h-8 cursor-pointer hover:ring-2 hover:ring-blue-200 transition-all">
-                  {userProfile.avatar && userProfile.avatar.startsWith("data:") ? (
+                  {userProfile.avatar &&
+                  userProfile.avatar.startsWith("data:") ? (
                     <AvatarImage src={userProfile.avatar} />
                   ) : userProfile.avatar ? (
                     <div className="w-full h-full flex items-center justify-center text-lg">
@@ -210,8 +232,12 @@ export default function Settings() {
                   <div className="flex items-center space-x-2">
                     <User className="w-4 h-4 text-gray-500" />
                     <div>
-                      <p className="text-sm font-medium">{userProfile.firstName} {userProfile.lastName}</p>
-                      <p className="text-xs text-gray-500">{userProfile.plan}</p>
+                      <p className="text-sm font-medium">
+                        {userProfile.firstName} {userProfile.lastName}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {userProfile.plan}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -227,7 +253,10 @@ export default function Settings() {
                   <SettingsIcon className="w-4 h-4" />
                   <span>Account Settings</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigate('/login')} className="flex items-center space-x-2 text-red-600">
+                <DropdownMenuItem
+                  onClick={() => navigate("/login")}
+                  className="flex items-center space-x-2 text-red-600"
+                >
                   <LogOut className="w-4 h-4" />
                   <span>Sign Out</span>
                 </DropdownMenuItem>
@@ -643,7 +672,11 @@ export default function Settings() {
                       </Label>
                       <div className="flex items-center space-x-2 mt-1">
                         <Badge variant="default">{userProfile.plan}</Badge>
-                        <Button variant="link" onClick={() => navigate('/pricing')} className="px-0 h-auto text-sm">
+                        <Button
+                          variant="link"
+                          onClick={() => navigate("/pricing")}
+                          className="px-0 h-auto text-sm"
+                        >
                           Upgrade Plan
                         </Button>
                       </div>

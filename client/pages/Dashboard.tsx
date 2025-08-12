@@ -9,7 +9,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
@@ -192,19 +198,34 @@ export default function Dashboard() {
             </span>
           </div>
           <nav className="hidden md:flex items-center space-x-6">
-            <Button variant="ghost" className="text-blue-600 hover:text-blue-700 hover:bg-blue-50">
+            <Button
+              variant="ghost"
+              className="text-blue-600 hover:text-blue-700 hover:bg-blue-50"
+            >
               <BarChart3 className="w-4 h-4 mr-2" />
               Dashboard
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/links")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/links")}
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            >
               <LinkIcon className="w-4 h-4 mr-2" />
               My Links
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/analytics")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/analytics")}
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            >
               <BarChart3 className="w-4 h-4 mr-2" />
               Analytics
             </Button>
-            <Button variant="ghost" onClick={() => navigate("/settings")} className="text-gray-700 hover:text-gray-900 hover:bg-gray-100">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/settings")}
+              className="text-gray-700 hover:text-gray-900 hover:bg-gray-100"
+            >
               <Settings className="w-4 h-4 mr-2" />
               Settings
             </Button>
@@ -237,7 +258,9 @@ export default function Dashboard() {
                   <div className="flex items-center space-x-2">
                     <User className="w-4 h-4 text-gray-500" />
                     <div>
-                      <p className="text-sm font-medium">{userData.firstName} {userData.lastName}</p>
+                      <p className="text-sm font-medium">
+                        {userData.firstName} {userData.lastName}
+                      </p>
                       <p className="text-xs text-gray-500">{userData.plan}</p>
                     </div>
                   </div>
@@ -250,11 +273,17 @@ export default function Dashboard() {
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={() => navigate('/settings')} className="flex items-center space-x-2">
+                <DropdownMenuItem
+                  onClick={() => navigate("/settings")}
+                  className="flex items-center space-x-2"
+                >
                   <Settings className="w-4 h-4" />
                   <span>Account Settings</span>
                 </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => navigate('/login')} className="flex items-center space-x-2 text-red-600">
+                <DropdownMenuItem
+                  onClick={() => navigate("/login")}
+                  className="flex items-center space-x-2 text-red-600"
+                >
                   <LogOut className="w-4 h-4" />
                   <span>Sign Out</span>
                 </DropdownMenuItem>
@@ -712,7 +741,7 @@ export default function Dashboard() {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => navigate('/settings')}
+                onClick={() => navigate("/settings")}
                 className="h-auto p-4 flex flex-col items-center space-y-2"
               >
                 <Settings className="w-6 h-6 text-gray-600" />
