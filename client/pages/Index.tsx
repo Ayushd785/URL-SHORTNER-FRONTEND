@@ -575,16 +575,9 @@ export default function Index() {
             </div>
 
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12 scroll-reveal">
-              <div className="flex flex-col md:flex-row items-center gap-8">
-                {/* Profile Picture Placeholder */}
-                <div className="flex-shrink-0">
-                  <div className="developer-avatar w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white text-4xl md:text-5xl font-bold shadow-2xl">
-                    A
-                  </div>
-                </div>
-
+              <div className="text-center">
                 {/* Content */}
-                <div className="flex-1 text-center md:text-left">
+                <div className="max-w-3xl mx-auto">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
                     Hi, I'm Ayush! 👋
                   </h3>
